@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<<head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,8 +20,10 @@
 </head>
 
 <body>
-    <!-- Div Principal -->
+
+    <!--// Main Wrapper \\-->
     <div class="sportsmagazine-main-wrapper">
+
         <!-- Header -->
         <header id="sportsmagazine-header" class="sportsmagazine-header-one">
             <!-- Sección Principal -->
@@ -45,7 +47,8 @@
                                     <div class="collapse navbar-collapse" id="navbar-collapse-1">
                                         <ul class="nav navbar-nav">
                                             <li><a href="index.html">INICIO</a></li>
-                                            <li class="sportsmagazine-megamenu-li"><a href="fixture.html">PARTIDOS</a></li>
+                                            <li class="sportsmagazine-megamenu-li"><a
+                                                    href="fixture.html">FIXTURE</a></li>
                                             <li><a href="404.html">POSICIONES</a></li>
                                             <li><a href="404.html">ESTADÍSTICAS</a></li>
                                         </ul>
@@ -60,11 +63,16 @@
         </header>
         <!-- Header -->
 
-
+        <!--// SubHeader \\-->
+        <div class="sportsmagazine-subheader">
+            <span class="subheader-transparent"></span>
+            <div class="container">
+            </div>
+        </div>
+        <!--// SubHeader \\-->
         <!--// Main Content \\-->
         <div class="sportsmagazine-main-content sportsmagazine-error-page">
             <span class="sportsmagazine-error-transparent"></span>
-
             <!--// Main Section \\-->
             <div class="sportsmagazine-main-section sportsmagazine-error-pagefull">
                 <div class="container">
@@ -87,15 +95,12 @@
                 </div>
             </div>
             <!--// Main Section \\-->
-
         </div>
         <!--// Main Content \\-->
 
 
-
-
-          <!--// Footer \\-->
-          <footer id="sportsmagazine-footer" class="sportsmagazine-footer-one">
+        <!--// Footer \\-->
+        <footer id="sportsmagazine-footer" class="sportsmagazine-footer-one">
 
             <!--// Footer Widget \\-->
             <div class="sportsmagazine-footer-widget">
@@ -112,7 +117,8 @@
                                         class="sportsmagazine-colorhover fa fa-facebook-official" target="_blank"></a>
                                 </li>
                                 <li><a href="https://x.com/atleticosaladas"
-                                        class="sportsmagazine-colorhover fa fa-twitter-square" target="_blank"></a></li>
+                                        class="sportsmagazine-colorhover fa fa-twitter-square" target="_blank"></a>
+                                </li>
                                 <li><a href="https://pk.linkedin.com/"
                                         class="sportsmagazine-colorhover fa fa-linkedin-square" target="_blank"></a>
                                 </li>
@@ -125,10 +131,12 @@
                                 <h2>Dirección</h2>
                             </div>
                             <ul class="sportsmagazine-info-list">
-                                <li><i class="fa fa-map-marker"></i> <span><a>Alvear 1135, Saladas Corrientes</a></span>
+                                <li><i class="fa fa-map-marker"></i> <span><a>Alvear 1135, Saladas
+                                            Corrientes</a></span>
                                 </li>
                                 <li><i class="fa fa-envelope"></i> <span><a
-                                            href="mailto:name@email.com">clubatleticosaldas@gmail.com</a></span></li>
+                                            href="mailto:name@email.com">clubatleticosaldas@gmail.com</a></span>
+                                </li>
                             </ul>
 
                         </aside>
@@ -148,7 +156,8 @@
                                 <li><a data-fancybox-group="group" href="images/equipos/kioscojfoto.png"
                                         class="fancybox"><img src="images/equipos/kioscojfoto.png" alt=""></a></li>
                                 <li><a data-fancybox-group="group" href="images/equipos/abucastorfoto.png"
-                                        class="fancybox"><img src="images/equipos/abucastorfoto.png" alt=""></a></li>
+                                        class="fancybox"><img src="images/equipos/abucastorfoto.png" alt=""></a>
+                                </li>
                                 <li><a data-fancybox-group="group" href="images/equipos/elbunkerfoto.png"
                                         class="fancybox"><img src="images/equipos/elbunkerfoto.png" alt=""></a></li>
                                 <li><a data-fancybox-group="group" href="images/equipos/goyinfoto.png"
@@ -170,7 +179,8 @@
                 <div class="container">
                     <div class="row">
                         <aside class="col-md-6 sportsmagazine-copyright-left">
-                            <p><a target="_blank" href="#">Club Atlético Saladas - Desde el 30 de Junio de 1941</a></p>
+                            <p><a target="_blank" href="#">Club Atlético Saladas - Desde el 30 de Junio de 1941</a>
+                            </p>
                         </aside>
                         <aside class="col-md-6 sportsmagazine-copyright-right">
                             <ul class="sportsmagazine-copyright-link">
@@ -188,93 +198,6 @@
 
         <div class="clearfix"></div>
     </div>
-    <!-- Div Principal -->
-
-    <!-- SearchModal -->
-    <div class="searchmodal modal fade" id="searchModal" tabindex="-1" role="dialog">
-        <a href="#" data-dismiss="modal" class="sportsmagazine-modal-close"><i class="icon-uniF106"></i></a>
-        <div class="modal-dialog" role="document">
-            <div class="container">
-                <div class="row">
-                    <form class="sportsmagazine-search-box">
-                        <input type="text" value="Search Your Keyword"
-                            onblur="if(this.value == '') { this.value ='Search Your Keyword'; }"
-                            onfocus="if(this.value =='Search Your Keyword') { this.value = ''; }">
-                        <input type="submit" value="">
-                        <i class="fa fa-search"></i>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- LoginModal -->
-    <div class="loginmodal modal fade" id="loginModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="sportsmagazine-login-box">
-                <a href="#" data-dismiss="modal" class="sportsmagazine-login-close sportsmagazine-color"><i
-                        class="icon-uniF106"></i></a>
-                <h4>Login To Your Account</h4>
-                <form>
-                    <input type="text" value="Enter username*"
-                        onblur="if(this.value == '') { this.value ='Enter username*'; }"
-                        onfocus="if(this.value =='Enter username*') { this.value = ''; }">
-                    <input type="password" value="Password*" onblur="if(this.value == '') { this.value ='Password*'; }"
-                        onfocus="if(this.value =='Password*') { this.value = ''; }">
-                    <a href="#" class="sportsmagazine-colorhover">Forget Password?</a>
-                    <div class="clearfix"></div>
-                    <label><input type="submit" value="Sign In"
-                            class="sportsmagazine-bordercolor sportsmagazine-color"></label>
-                </form>
-                <h4>Try Our Socials Also</h4>
-                <ul class="login-network">
-                    <li><a href="#"><i class="fa fa-facebook-square"></i> Facebook</a></li>
-                    <li class="sportsmagazine-twitter"><a href="#"><i class="fa fa-twitter-square"></i> Twitter</a></li>
-                    <li class="sportsmagazine-google-plus"><a href="#"><i class="fa fa-google-plus-square"></i>
-                            Google+</a></li>
-                </ul>
-                <p>Not A Member Yet ? <a href="#" class="sportsmagazine-color">Sign - Up Now !</a></p>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-
-    <!-- SignupModal -->
-    <div class="loginmodal modal fade" id="signupModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="sportsmagazine-login-box">
-                <a href="#" data-dismiss="modal" class="sportsmagazine-login-close sportsmagazine-color"><i
-                        class="icon-uniF106"></i></a>
-                <h4>Sign Up Now</h4>
-                <form>
-                    <input type="text" value="Enter username*"
-                        onblur="if(this.value == '') { this.value ='Enter username*'; }"
-                        onfocus="if(this.value =='Enter username*') { this.value = ''; }">
-                    <input type="text" value="Type your password*"
-                        onblur="if(this.value == '') { this.value ='Type your password*'; }"
-                        onfocus="if(this.value =='Type your password*') { this.value = ''; }">
-                    <input type="text" value="Confirm your password*"
-                        onblur="if(this.value == '') { this.value ='Confirm your password*'; }"
-                        onfocus="if(this.value =='Confirm your password*') { this.value = ''; }">
-                    <a href="#" class="sportsmagazine-colorhover">Forget Password?</a>
-                    <div class="clearfix"></div>
-                    <label><input type="submit" value="Sign Up"
-                            class="sportsmagazine-bordercolor sportsmagazine-color"></label>
-                </form>
-                <h4>Try Our Socials Also</h4>
-                <ul class="login-network">
-                    <li><a href="#"><i class="fa fa-facebook-square"></i> Facebook</a></li>
-                    <li class="sportsmagazine-twitter"><a href="#"><i class="fa fa-twitter-square"></i> Twitter</a></li>
-                    <li class="sportsmagazine-google-plus"><a href="#"><i class="fa fa-google-plus-square"></i>
-                            Google+</a></li>
-                </ul>
-                <p>Not A Member Yet ? <a href="#" class="sportsmagazine-color">Login - Now !</a></p>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-
-
     <!-- jQuery (necessary for JavaScript plugins) -->
     <script type="text/javascript" src="script/jquery.js"></script>
     <script type="text/javascript" src="script/bootstrap.min.js"></script>
