@@ -1,6 +1,6 @@
 const equipos = ['ABU CASTOR','EL BUNKER','GOYIN','KIOSCO JOSEFINA', 'LA LIGA','4M DISTRIBUCIONES'];
 const text1 = 'Victoria del equipo Kiosco Josefina 70 - 54 a 4M Distribuciones en la 1° Fecha del Torneo Comercial';
-const text2 = 'La Liga vence a Abu Castor 63 a 55 en la primera fecha del Torneo Comercial';
+const text2 = 'La Liga vence a Abu Castor por 63 a 55 en la primera fecha del Torneo Comercial';
 
 
 function actualizarContenido(idFecha, idTexto, nuevoTexto) {
