@@ -1,7 +1,28 @@
-const equipos = ['ABU CASTOR','EL BUNKER','GOYIN','KIOSCO JOSEFINA', 'LA LIGA','4M DISTRIBUCIONES'];
+// 1- Actualizar Contenido de noticias
 const text1 = 'Victoria del equipo Kiosco Josefina 70 - 54 a 4M Distribuciones en la 1° Fecha del Torneo Comercial';
 const text2 = 'La Liga vence a Abu Castor por 63 a 55 en la primera fecha del Torneo Comercial';
 
+// 2- Cargar Fixture y resultados
+const arrayFixture = [
+  ['j1p1', 'Viernes, 29/11 - 21:00', '2024-11-29T21:00', 'KIOSCO J.', 70, '4M DIST.', 54],
+  ['j1p2', 'Viernes, 29/11 - 22:30', '2024-12-04T22:30', 'LA LIGA', 63, 'ABU CASTOR', 55]
+];
+
+
+
+// Función para modificar el contenido
+document.addEventListener("DOMContentLoaded", function () {
+  actualizarContenido('fecha-1', 'text-1', text1);
+  actualizarContenido('fecha-2', 'text-2', text2);
+});
+
+// Actualización de jornada
+document.addEventListener('DOMContentLoaded', () => {
+  arrayFixture.forEach(fixture => {
+    const [jornadaId, nuevaFecha, nuevoDatetime, equipo1, puntos1, equipo2, puntos2] = fixture;
+    actualizarFixture(jornadaId, nuevaFecha, nuevoDatetime, equipo1, puntos1, equipo2, puntos2);
+  });
+});
 
 function actualizarContenido(idFecha, idTexto, nuevoTexto) {
   // Obtener la fecha actual
@@ -30,8 +51,20 @@ function actualizarContenido(idFecha, idTexto, nuevoTexto) {
   }
 };
 
-// Llamar a la función para modificar el contenido dinámicamente
-document.addEventListener("DOMContentLoaded", function() {
-  actualizarContenido('fecha-1', 'text-1', text1);
-  actualizarContenido('fecha-2', 'text-2', text2);
-});
+
+function actualizarFixture(jornadaId, nuevaFecha, nuevoDatetime, equipo1, puntos1, equipo2, puntos2) {
+  const jornada = document.getElementById(jornadaId);
+  if (!jornada) return console.warn(`Jornada "${jornadaId}" no encontrada`);
+
+  const timeElement = jornada.querySelector('time');
+  if (timeElement) {
+    timeElement.innerText = nuevaFecha;
+    timeElement.setAttribute('datetime', nuevoDatetime);
+  }
+
+  const equipos = jornada.querySelectorAll('.sportsmagazine-bgcolor li');
+  if (equipos.length === 2) {
+    equipos[0].innerHTML = `${equipo1} <span>${puntos1}</span>`;
+    equipos[1].innerHTML = `${equipo2} <span>${puntos2}</span>`;
+  }
+}
