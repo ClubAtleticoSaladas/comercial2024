@@ -5,7 +5,9 @@ const text2 = 'La Liga vence a Abu Castor por 63 a 55 en la primera fecha del To
 // 2- Cargar Fixture y resultados
 const arrayFixture = [
   ['j1p1', 'Viernes, 29/11 - 21:00', '2024-11-29T21:00', 'KIOSCO J.', 70, '4M DIST.', 54],
-  ['j1p2', 'Viernes, 29/11 - 22:30', '2024-12-04T22:30', 'LA LIGA', 63, 'ABU CASTOR', 55]
+  ['j1p2', 'Viernes, 29/11 - 22:30', '2024-11-29T22:30', 'LA LIGA', 63, 'ABU CASTOR', 55],
+  ['j2p1', 'Miércoles, 04/12 - 21:00', '2024-12-04T21:00', 'KIOSCO J.', '--', 'LA LIGA', '--'],
+  ['j2p2', 'Miércoles, 04/12 - 22:30', '2024-12-04T22:30', 'EL BUNKER', '--', 'GOYIN', '--']
 ];
 
 
