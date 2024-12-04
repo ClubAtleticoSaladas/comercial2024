@@ -4,10 +4,15 @@ const text2 = 'La Liga vence a Abu Castor por 63 a 55 en la primera fecha del To
 
 // 2- Cargar Fixture y resultados
 const arrayFixture = [
-  ['j1p1', 'Viernes, 29/11 - 21:00', '2024-11-29T21:00', 'KIOSCO J.', 70, '4M DIST.', 54],
-  ['j1p2', 'Viernes, 29/11 - 22:30', '2024-11-29T22:30', 'LA LIGA', 63, 'ABU CASTOR', 55],
-  ['j2p1', 'Miércoles, 04/12 - 21:00', '2024-12-04T21:00', 'KIOSCO J.', '--', 'LA LIGA', '--'],
-  ['j2p2', 'Miércoles, 04/12 - 22:30', '2024-12-04T22:30', 'EL BUNKER', '--', 'GOYIN', '--']
+  ['j1p1', 'Viernes, 29/11 - 21:00', '2024-11-29T21:00', 'KIOSCO J.', 70, '04 Guillermo Godoy (25)', '4M DIST.', 54, '08 José Martín Borda (11)'],
+  ['j1p2', 'Viernes, 29/11 - 22:30', '2024-11-29T22:30', 'LA LIGA', 63, '01 Mariano Y. Romero (17)', 'ABU CASTOR', 55, '06 Néstor Altamirano (15)'],
+  ['j2p1', 'Miércoles, 04/12 - 21:00', '2024-12-04T21:00', 'KIOSCO J.', '--', '', 'LA LIGA', '--', ''],
+  ['j2p2', 'Miércoles, 04/12 - 22:30', '2024-12-04T22:30', 'EL BUNKER', '--', '', 'GOYIN', '--', ''],
+  ['j3p1', 'Viernes, 06/12 - 21:00', '2024-12-06T21:00', 'ABU CASTOR', '--', '', 'GOYIN', '--', ''],
+  ['j3p2', 'Viernes, 06/12 - 22:30', '2024-12-06T22:30', '4M DIST.', '--', '', 'EL BUNKER', '--', ''],
+  ['j4p1', 'Domingo, 08/12 - 20:00', '2024-12-08T20:00', 'KIOSCO J.', '--', '', 'ABU CASTOR', '--', ''],
+  ['j4p2', 'Domingo, 08/12 - 21:30', '2024-12-08T21:30', '4M DIST.', '--', '', 'LA LIGA', '--', ''],
+
 ];
 
 
@@ -21,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
 // Actualización de jornada
 document.addEventListener('DOMContentLoaded', () => {
   arrayFixture.forEach(fixture => {
-    const [jornadaId, nuevaFecha, nuevoDatetime, equipo1, puntos1, equipo2, puntos2] = fixture;
-    actualizarFixture(jornadaId, nuevaFecha, nuevoDatetime, equipo1, puntos1, equipo2, puntos2);
+    const [jornadaId, nuevaFecha, nuevoDatetime, equipo1, puntos1, jugador1, equipo2, puntos2, jugador2] = fixture;
+    actualizarFixture(jornadaId, nuevaFecha, nuevoDatetime, equipo1, puntos1, jugador1, equipo2, puntos2, jugador2);
   });
 });
 
@@ -54,7 +59,7 @@ function actualizarContenido(idFecha, idTexto, nuevoTexto) {
 };
 
 
-function actualizarFixture(jornadaId, nuevaFecha, nuevoDatetime, equipo1, puntos1, equipo2, puntos2) {
+function actualizarFixture(jornadaId, nuevaFecha, nuevoDatetime, equipo1, puntos1, jugador1, equipo2, puntos2, jugador2) {
   const jornada = document.getElementById(jornadaId);
   if (!jornada) return console.warn(`Jornada "${jornadaId}" no encontrada`);
 
