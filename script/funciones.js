@@ -1,14 +1,14 @@
 // 1- Actualizar Contenido de noticias
-const text1 = 'Victoria del equipo Kiosco Josefina 70 - 54 a 4M Distribuciones en la 1° Fecha del Torneo Comercial';
-const text2 = 'La Liga vence a Abu Castor por 63 a 55 en la primera fecha del Torneo Comercial';
+const text1 = 'Kiosco Josefina gana su segundo partido 94 - 80 a La Liga en la 2° Fecha del Torneo Comercial';
+const text2 = 'Goyin debuta ganando a El Bunker de Bella Vista por 9 puntos en el Torneo Comercial';
 
 // 2- Cargar Fixture y resultados
 const arrayFixture = [
   ['j1p1', 'Viernes, 29/11 - 21:00', '2024-11-29T21:00', 'KIOSCO J.', 70, '04 Guillermo Godoy (25)', '4M DIST.', 54, '08 José Martín Borda (11)'],
   ['j1p2', 'Viernes, 29/11 - 22:30', '2024-11-29T22:30', 'LA LIGA', 63, '01 Mariano Y. Romero (17)', 'ABU CASTOR', 55, '06 Néstor Altamirano (15)'],
 
-  ['j2p1', 'Miércoles, 04/12 - 21:00', '2024-12-04T21:00', 'KIOSCO J.', '--', '', 'LA LIGA', '--', ''],
-  ['j2p2', 'Miércoles, 04/12 - 22:30', '2024-12-04T22:30', 'EL BUNKER', '--', '', 'GOYIN', '--', ''],
+  ['j2p1', 'Miércoles, 04/12 - 21:00', '2024-12-04T21:00', 'KIOSCO J.', 94, '05 Cristian Rausch (26)', 'LA LIGA', 80, ''],
+  ['j2p2', 'Miércoles, 04/12 - 22:30', '2024-12-04T22:30', 'EL BUNKER', 72, '', 'GOYIN', 81, ''],
 
   ['j3p1', 'Viernes, 06/12 - 21:00', '2024-12-06T21:00', 'ABU CASTOR', '--', '', 'GOYIN', '--', ''],
   ['j3p2', 'Viernes, 06/12 - 22:30', '2024-12-06T22:30', '4M DIST.', '--', '', 'EL BUNKER', '--', ''],
@@ -40,7 +40,83 @@ const arrayFixture = [
   ['f1p1', 'A definir, --/-- - --:--', '2024-12-20T21:30', '1° FINALISTA', '--', '', '2° FINALISTA', '--', '']
 ];
 
+// Datos de entrada
+const datosPartido1 = {
+  titulo: "Jornada 2 - Partido 1",
+  fecha: "Miércoles, 04/12 - 21:00",
+  equipos: [
+    {
+      nombre: "Kiosco J.",
+      imagen: "kioscoj",
+      jugador: "05 Cristian Rausch (26)"
+    },
+    {
+      nombre: "La Liga",
+      imagen: "laliga",
+      jugador: "14 Maximiliano Redruello (24)"
+    }
+  ],
+  marcador: { local: 94, visitante: 80 }
+};
+const datosPartido2 = {
+  titulo: "Jornada 2 - Partido 1",
+  fecha: "Miércoles, 04/12 - 22:30",
+  equipos: [
+    {
+      nombre: "El Bunker",
+      imagen: "elbunker",
+      jugador: "17 Francisco Albarellos (31)"
+    },
+    {
+      nombre: "Goyin",
+      imagen: "goyin",
+      jugador: "08 Ivan Bolaño (24)"
+    }
+  ],
+  marcador: { local: 72, visitante: 81 }
+};
 
+// Llama a la función con los datos de entrada
+window.onload = function () {
+  cambiarTextoEImagenes(datosPartido1, 'resultado1');
+  cambiarTextoEImagenes(datosPartido2, 'resultado2');
+};
+
+function cambiarTextoEImagenes(datosPartido, idDiv) {
+  // Selecciona el div usando el ID 'resultado1'
+  const matchResultDiv = document.getElementById(idDiv);
+
+  // Cambia el título y la fecha
+  matchResultDiv.querySelector('.sportsmagazine-match-title h4').innerText = datosPartido.titulo;
+  matchResultDiv.querySelector('.sportsmagazine-match-title span').innerText = datosPartido.fecha;
+
+  // Cambia los nombres, jugadores y las imágenes de los equipos
+  const equipos = matchResultDiv.querySelectorAll('ul li h4 a');
+  const jugadores = matchResultDiv.querySelectorAll('ul li span');
+  const imagenes = matchResultDiv.querySelectorAll('ul li img');
+
+  if (equipos.length >= 2 && jugadores.length >= 2 && imagenes.length >= 2) {
+    // Equipo 1
+    equipos[0].innerText = datosPartido.equipos[0].nombre;
+    jugadores[0].innerText = datosPartido.equipos[0].jugador;
+    const nombreEquipo1 = datosPartido.equipos[0].imagen.replace(/\s+/g, "_");
+    imagenes[0].src = "images/equipos/" + nombreEquipo1 + ".png";
+    imagenes[0].alt = `Logo de ${datosPartido.equipos[0].nombre}`;
+
+    // Equipo 2
+    equipos[1].innerText = datosPartido.equipos[1].nombre;
+    jugadores[1].innerText = datosPartido.equipos[1].jugador;
+    const nombreEquipo2 = datosPartido.equipos[1].imagen.replace(/\s+/g, "_");
+    imagenes[1].src = "images/equipos/" + nombreEquipo2 + ".png";
+    imagenes[1].alt = `Logo de ${datosPartido.equipos[1].nombre}`;
+  } else {
+    console.error("No se encontraron suficientes elementos para equipos, jugadores o imágenes.");
+  }
+
+  // Cambia el marcador final
+  matchResultDiv.querySelector('.sportsmagazine-match-score p').innerHTML =
+    `<strong class="sportsmagazine-color">${datosPartido.marcador.local}</strong> <small>:</small> ${datosPartido.marcador.visitante}`;
+};
 
 // Función para modificar el contenido
 document.addEventListener("DOMContentLoaded", function () {
