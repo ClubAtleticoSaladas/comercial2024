@@ -4,53 +4,40 @@ const text2 = 'Goyin debuta ganando a El Bunker de Bella Vista por 9 puntos en e
 
 // 2- Cargar Fixture y resultados
 const arrayFixture = [
-  ['j1p1', 'Viernes, 29/11 - 21:00', '2024-11-29T21:00', 'KIOSCO J.', 70, '04 Guillermo Godoy (25)', '4M DIST.', 54, '08 José Martín Borda (11)'],
-  ['j1p2', 'Viernes, 29/11 - 22:30', '2024-11-29T22:30', 'LA LIGA', 63, '01 Mariano Y. Romero (17)', 'ABU CASTOR', 55, '06 Néstor Altamirano (15)'],
+  ['j1p1', 'Viernes, 29/11 - 21:00',  'KIOSCO J.', 70, '04 Guillermo Godoy (25)', '4M DIST.', 54, '08 José Martín Borda (11)'],
+  ['j1p2', 'Viernes, 29/11 - 22:30',  'LA LIGA', 63, '01 Mariano Y. Romero (17)', 'ABU CASTOR', 55, '06 Néstor Altamirano (15)'],
 
-  ['j2p1', 'Miércoles, 04/12 - 21:00', '2024-12-04T21:00', 'KIOSCO J.', 94, '05 Cristian Rausch (26)', 'LA LIGA', 80, ''],
-  ['j2p2', 'Miércoles, 04/12 - 22:30', '2024-12-04T22:30', 'EL BUNKER', 72, '', 'GOYIN', 81, ''],
+  ['j2p1', 'Miércoles, 04/12 - 21:00',  'KIOSCO J.', 94, '05 Cristian Rausch (26)', 'LA LIGA', 80, ''],
+  ['j2p2', 'Miércoles, 04/12 - 22:30', 'EL BUNKER', 72, '', 'GOYIN', 81, ''],
 
-  ['j3p1', 'Viernes, 06/12 - 21:00', '2024-12-06T21:00', 'ABU CASTOR', '--', '', 'GOYIN', '--', ''],
-  ['j3p2', 'Viernes, 06/12 - 22:30', '2024-12-06T22:30', '4M DIST.', '--', '', 'EL BUNKER', '--', ''],
+  ['j3p1', 'Viernes, 06/12 - 21:00',  'ABU CASTOR', '--', '', 'GOYIN', '--', ''],
+  ['j3p2', 'Viernes, 06/12 - 22:30',  '4M DIST.', '--', '', 'EL BUNKER', '--', ''],
 
-  ['j4p1', 'Miércoles, 11/12 - 21:00', '2024-12-11T21:00', 'KIOSCO J.', '--', '', 'ABU CASTOR', '--', ''],
-  ['j4p2', 'Miércoles, 11/12 - 22:30', '2024-12-11T22:30', '4M DIST.', '--', '', 'LA LIGA', '--', ''],
+  ['j4p1', 'Miércoles, 11/12 - 21:00',  'KIOSCO J.', '--', '', 'ABU CASTOR', '--', ''],
+  ['j4p2', 'Miércoles, 11/12 - 22:30',  '4M DIST.', '--', '', 'LA LIGA', '--', ''],
 
-  ['j5p1', 'Viernes, 13/12 - 21:00', '2024-12-13T21:00', 'LA LIGA.', '--', '', 'EL BUNKER', '--', ''],
-  ['j5p2', 'Viernes, 13/12 - 22:30', '2024-12-13T22:30', 'KIOSCO J.', '--', '', 'GOYIN', '--', ''],
+  ['j5p1', 'Viernes, 13/12 - 21:00',  'LA LIGA.', '--', '', 'EL BUNKER', '--', ''],
+  ['j5p2', 'Viernes, 13/12 - 22:30',  'KIOSCO J.', '--', '', 'GOYIN', '--', ''],
 
-  ['j6p1', 'Domingo, 15/12 - 20:00', '2024-12-15T20:00', 'ABU CASTOR', '--', '', 'EL BUNKER', '--', ''],
-  ['j6p2', 'Domingo, 15/12 - 21:30', '2024-12-15T21:30', '4M DIST.', '--', '', 'GOYIN', '--', ''],
+  ['j6p1', 'Domingo, 15/12 - 20:00', 'ABU CASTOR', '--', '', 'EL BUNKER', '--', ''],
+  ['j6p2', 'Domingo, 15/12 - 21:30',  '4M DIST.', '--', '', 'GOYIN', '--', ''],
 
-  ['j7p1', 'Miércoles, 18/12 - 21:00', '2024-12-18T21:00', 'LA LIGA', '--', '', 'GOYIN', '--', ''],
-  ['j7p2', 'Miércoles, 18/12 - 22:30', '2024-12-18T22:30', 'KIOSCO J.', '--', '', 'EL BUNKER', '--', ''],
+  ['j7p1', 'Miércoles, 18/12 - 21:00',  'LA LIGA', '--', '', 'GOYIN', '--', ''],
+  ['j7p2', 'Miércoles, 18/12 - 22:30',  'KIOSCO J.', '--', '', 'EL BUNKER', '--', ''],
 
-  ['j8p1', 'Viernes, 20/12 - 21:00', '2024-12-20T21:00', '4M DIST.', '--', '', 'ABU CASTOR', '--', ''],
-  // ['j8p2', 'Viernes, 20/12 - 22:30', '2024-12-20T22:30', 'Equipo1', '--', '', 'Equipo2', '--', ''],
+  ['j8p1', 'Viernes, 20/12 - 21:00',  '4M DIST.', '--', '', 'ABU CASTOR', '--', ''],
+  // ['j8p2', 'Viernes, 20/12 - 22:30',  'Equipo1', '--', '', 'Equipo2', '--', ''],
 
-  ['s1p1', 'Domingo, 22/12 - 20:00', '2024-12-20T20:00', '2° PUESTO', '--', '', '3° PUESTO', '--', ''],
-  ['s1p2', 'Domingo, 22/12 - 21:30', '2024-12-20T21:30', '1° PUESTO', '--', '', '4° PUESTO', '--', ''],
+  ['s1p1', 'Domingo, 22/12 - 20:00',  '2° PUESTO', '--', '', '3° PUESTO', '--', ''],
+  ['s1p2', 'Domingo, 22/12 - 21:30',  '1° PUESTO', '--', '', '4° PUESTO', '--', ''],
 
-  ['s2p1', 'A definir, --/-- - --:--', '2024-12-20T20:00', '1° PUESTO', '--', '', '4° PUESTO', '--', ''],
-  ['s2p2', 'A definir, --/-- - --:--', '2024-12-20T21:30', '2° PUESTO', '--', '', '3° PUESTO', '--', ''],
+  ['s2p1', 'A definir, --/-- - --:--',  '1° PUESTO', '--', '', '4° PUESTO', '--', ''],
+  ['s2p2', 'A definir, --/-- - --:--', '2° PUESTO', '--', '', '3° PUESTO', '--', ''],
 
-  // ['d1p1', 'A definir, --/-- - --:--', '2024-12-20T20:00', 'Equipo 1', '--', '', 'Equipo 2', '--', ''],
-  // ['d1p2', 'A definir, --/-- - --:--', '2024-12-20T21:30', 'Equipo 3', '--', '', 'Equipo 4', '--', ''],
+  // ['d1p1', 'A definir, --/-- - --:--',  'Equipo 1', '--', '', 'Equipo 2', '--', ''],
+  // ['d1p2', 'A definir, --/-- - --:--',  'Equipo 3', '--', '', 'Equipo 4', '--', ''],
 
-  ['f1p1', 'A definir, --/-- - --:--', '2024-12-20T21:30', '1° FINALISTA', '--', '', '2° FINALISTA', '--', '']
-];
-
-const jugadores = [
-  { nombre: "Guillermo Godoy", equipo: "Kiosco J.", pts: 35, faltas: 6 },
-  { nombre: "Francisco Albarellos", equipo: "El Bunker", pts: 31, faltas: 6 },
-  { nombre: "Julian Arturo Romero", equipo: "La Liga", pts: 29, faltas: 5 },
-  { nombre: "Cristian Rausch", equipo: "Kiosco J.", pts: 26, faltas: 1 },
-  { nombre: "Lautaro Fitz", equipo: "Kiosco J.", pts: 26, faltas: 7 },
-  { nombre: "Ivan Bolaño", equipo: "Goyin", pts: 24, faltas: 0 },
-  { nombre: "Maximiliano Redruello", equipo: "La Liga", pts: 24, faltas: 1 },
-  { nombre: "Lucas Matias Hanke", equipo: "El Bunker", pts: 24, faltas: 3 },
-  { nombre: "Hector Stanco", equipo: "Kiosco J.", pts: 23, faltas: 7 },
-  { nombre: "Juan Cruz Barberan", equipo: "La Liga", pts: 19, faltas: 2 }
+  ['f1p1', 'A definir, --/-- - --:--', '1° FINALISTA', '--', '', '2° FINALISTA', '--', '']
 ];
 
 
@@ -141,8 +128,8 @@ document.addEventListener("DOMContentLoaded", function () {
 // Actualización de jornada
 document.addEventListener('DOMContentLoaded', () => {
   arrayFixture.forEach(fixture => {
-    const [jornadaId, nuevaFecha, nuevoDatetime, equipo1, puntos1, jugador1, equipo2, puntos2, jugador2] = fixture;
-    actualizarFixture(jornadaId, nuevaFecha, nuevoDatetime, equipo1, puntos1, jugador1, equipo2, puntos2, jugador2);
+    const [jornadaId, nuevaFecha, equipo1, puntos1, jugador1, equipo2, puntos2, jugador2] = fixture;
+    actualizarFixture(jornadaId, nuevaFecha, equipo1, puntos1, jugador1, equipo2, puntos2, jugador2);
   });
 });
 
@@ -174,14 +161,13 @@ function actualizarContenido(idFecha, idTexto, nuevoTexto) {
 };
 
 
-function actualizarFixture(jornadaId, nuevaFecha, nuevoDatetime, equipo1, puntos1, jugador1, equipo2, puntos2, jugador2) {
+function actualizarFixture(jornadaId, nuevaFecha, equipo1, puntos1, jugador1, equipo2, puntos2, jugador2) {
   const jornada = document.getElementById(jornadaId);
   if (!jornada) return console.warn(`Jornada "${jornadaId}" no encontrada`);
 
   const timeElement = jornada.querySelector('time');
   if (timeElement) {
     timeElement.innerText = nuevaFecha;
-    timeElement.setAttribute('datetime', nuevoDatetime);
   }
 
   const equipos = jornada.querySelectorAll('.sportsmagazine-bgcolor li');
@@ -193,40 +179,11 @@ function actualizarFixture(jornadaId, nuevaFecha, nuevoDatetime, equipo1, puntos
 
 function ordenarJugadores(jugadores) {
   return jugadores.sort((a, b) => {
-      if (b.pts !== a.pts) {
-          return b.pts - a.pts; // Ordenar por puntos descendente
-      } else {
-          return a.faltas - b.faltas; // Ordenar por faltas ascendente
-      }
+    if (b.pts !== a.pts) {
+      return b.pts - a.pts; // Ordenar por puntos descendente
+    } else {
+      return a.faltas - b.faltas; // Ordenar por faltas ascendente
+    }
   });
 }
 
-function cargarTabla(jugadores) {
-  const tabla = document.getElementById("tableGol");
-
-  // Limpiar filas excepto el encabezado
-  tabla.querySelectorAll("tr:not(:first-child)").forEach(tr => tr.remove());
-
-  // Limitar a los primeros 10 jugadores
-  jugadores.slice(0, 10).forEach((jugador, index) => {
-      const fila = document.createElement("tr");
-
-      // Alternar colores de fila
-      if (index % 2 === 0) fila.style.backgroundColor = "#ffffff";
-
-      fila.innerHTML = `
-          <td>${index + 1}</td> <!-- Posición asignada automáticamente -->
-          <td><span>${jugador.nombre}</span></td>
-          <td>${jugador.equipo}</td>
-          <td>${jugador.pts}</td>
-          <td>${jugador.faltas}</td>
-      `;
-      tabla.appendChild(fila);
-  });
-}
-
-// Ejecutar orden y cargar tabla al cargar la página
-document.addEventListener("DOMContentLoaded", () => {
-  const jugadoresOrdenados = ordenarJugadores(jugadores);
-  cargarTabla(jugadoresOrdenados);
-});
