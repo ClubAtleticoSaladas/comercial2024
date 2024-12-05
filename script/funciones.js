@@ -99,4 +99,4 @@ function actualizarFixture(jornadaId, nuevaFecha, nuevoDatetime, equipo1, puntos
     equipos[0].innerHTML = `${equipo1} <span>${puntos1}</span>`;
     equipos[1].innerHTML = `${equipo2} <span>${puntos2}</span>`;
   }
-}
+};
