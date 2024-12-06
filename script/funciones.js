@@ -1,8 +1,8 @@
-// 1- Actualizar Contenido de noticias
+// 1- Actualizar Contenido de Noticias Slider
 const text1 = 'Kiosco Josefina gana su segundo partido 94 - 80 a La Liga en la 2° Fecha del Torneo Comercial';
 const text2 = 'Goyin debuta ganando a El Bunker de Bella Vista por 9 puntos en el Torneo Comercial';
 
-// 2- Cargar Fixture y resultados
+// 2- Cargar resultados de Fixture Slider
 const arrayFixture = [
   ['j1p1', 'Viernes, 29/11 - 21:00',  'KIOSCO J.', 70, '04 Guillermo Godoy (25)', '4M DIST.', 54, '08 José Martín Borda (11)'],
   ['j1p2', 'Viernes, 29/11 - 22:30',  'LA LIGA', 63, '01 Mariano Y. Romero (17)', 'ABU CASTOR', 55, '06 Néstor Altamirano (15)'],
@@ -40,8 +40,7 @@ const arrayFixture = [
   ['f1p1', 'A definir, --/-- - --:--', '1° FINALISTA', '--', '', '2° FINALISTA', '--', '']
 ];
 
-
-// Datos de entrada
+// Cargar las Noticias de Resultados de Último Partido
 const datosPartido1 = {
   titulo: "Jornada 2 - Partido 1",
   fecha: "Miércoles, 04/12 - 21:00",
@@ -76,6 +75,7 @@ const datosPartido2 = {
   ],
   marcador: { local: 72, visitante: 81 }
 };
+
 
 // Llama a la función con los datos de entrada
 window.onload = function () {
