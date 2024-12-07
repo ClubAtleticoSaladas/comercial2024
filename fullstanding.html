@@ -101,133 +101,29 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="sportsmagazine-playoff-staning">
+                            <div class="sportsmagazine-playoff-staning" id="tablePos">
                                 <h4>Clasificación a Playoffs</h4>
                                 <table class="sportsmagazine-client-detail">
-                                    <tr>
-                                        <th>POS</th>
-                                        <th>Equipo</th>
-                                        <th>Pts</th>
-                                        <th>PJ</th>
-                                        <th>PG</th>
-                                        <th>PP</th>
-                                        <th>PF</th>
-                                        <th>PC</th>
-                                        <th>DIF</th>
-                                        <th>FT</th>
-                                    </tr>
-                                    <tr style="background-color: #ffffff;">
-                                        <td>01</td>
-                                        <td>
-                                            <figure><img src="images/equipos/kioscojG.png" alt=""></figure>
-                                            <div class="player-stats-text">
-                                                <h6>KIOSCO J.</h6>
-                                                <span>Saladas</span>
-                                            </div>
-                                        </td>
-                                        <td>04</td>
-                                        <td>02</td>
-                                        <td>02</td>
-                                        <td>00</td>
-                                        <td>164</td>
-                                        <td>134</td>
-                                        <td>+30</td>
-                                        <td>43</td>
-                                    </tr>
-                                    <tr>
-                                        <td>02</td>
-                                        <td>
-                                            <figure><img src="images/equipos/laligaG.png" alt=""></figure>
-                                            <div class="player-stats-text">
-                                                <h6>LA LIGA</h6>
-                                                <span>Saladas</span>
-                                            </div>
-                                        </td>
-                                        <td>03</td>
-                                        <td>02</td>
-                                        <td>01</td>
-                                        <td>01</td>
-                                        <td>143</td>
-                                        <td>149</td>
-                                        <td>-06</td>
-                                        <td>28</td>
-                                    </tr>
-                                    <tr style="background-color: #ffffff;">
-                                        <td>03</td>
-                                        <td>
-                                            <figure><img src="images/equipos/goyinG.png" alt=""></figure>
-                                            <div class="player-stats-text">
-                                                <h6>GOYIN</h6>
-                                                <span>saladas</span>
-                                            </div>
-                                        </td>
-                                        <td>02</td>
-                                        <td>01</td>
-                                        <td>01</td>
-                                        <td>00</td>
-                                        <td>81</td>
-                                        <td>72</td>
-                                        <td>+09</td>
-                                        <td>12</td>
-                                    </tr>
- 
-                                    <tr>
-                                        <td>04</td>
-                                        <td>
-                                            <figure><img src="images/equipos/abucastorG.png" alt=""></figure>
-                                            <div class="player-stats-text">
-                                                <h6>ABU CASTOR</h6>
-                                                <span>Saladas</span>
-                                            </div>
-                                        </td>
-                                        <td>01</td>
-                                        <td>01</td>
-                                        <td>00</td>
-                                        <td>01</td>
-                                        <td>55</td>
-                                        <td>63</td>
-                                        <td>-08</td>
-                                        <td>14</td>
-                                    </tr>
-                                    <tr style="background-color: #ffffff;">
-                                        <td>05</td>
-                                        <td>
-                                            <figure><img src="images/equipos/elbunkerG.png" alt=""></figure>
-                                            <div class="player-stats-text">
-                                                <h6>EL BUNKER</h6>
-                                                <span>Bella Vista</span>
-                                            </div>
-                                        </td>
-                                        <td>01</td>
-                                        <td>01</td>
-                                        <td>00</td>
-                                        <td>01</td>
-                                        <td>72</td>
-                                        <td>81</td>
-                                        <td>-09</td>
-                                        <td>12</td>
-                                    </tr>
-                                    <tr>
-                                        <td>06</td>
-                                        <td>
-                                            <figure><img src="images/equipos/4mdistG.png" alt=""></figure>
-                                            <div class="player-stats-text">
-                                                <h6>4M DIST.</h6>
-                                                <span>Saladas</span>
-                                            </div>
-                                        </td>
-                                        <td>01</td>
-                                        <td>01</td>
-                                        <td>00</td>
-                                        <td>01</td>
-                                        <td>54</td>
-                                        <td>70</td>
-                                        <td>-16</td>
-                                        <td>14</td>
-                                    </tr>
-
+                                    <thead>
+                                        <tr>
+                                            <th>POS</th>
+                                            <th>Equipo</th>
+                                            <th>Pts</th>
+                                            <th>PJ</th>
+                                            <th>PG</th>
+                                            <th>PP</th>
+                                            <th>PF</th>
+                                            <th>PC</th>
+                                            <th>DIF</th>
+                                            <th>FT</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Las filas de los equipos serán generadas dinámicamente por el script -->
+                                    </tbody>
                                 </table>
                             </div>
+                            
                             <ul class="sportsmagazine-offstanding-text">
                                 <li>
                                     <h6>POS :</h6>
@@ -380,6 +276,7 @@
     <script type="text/javascript" src="script/progressbar.js"></script>
     <script type="text/javascript" src="script/counter.js"></script>
     <script type="text/javascript" src="script/functions.js"></script>
+    <script type="text/javascript" src="script/posiciones.js"></script>
 
 
 </body>

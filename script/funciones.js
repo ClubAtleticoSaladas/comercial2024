@@ -40,7 +40,7 @@ const arrayFixture = [
   ['f1p1', 'A definir, --/-- - --:--', '1° FINALISTA', '--', '', '2° FINALISTA', '--', '']
 ];
 
-// Cargar las Noticias de Resultados de Último Partido
+// 3- Cargar las Noticias de Resultados de Último Partido
 const datosPartido1 = {
   titulo: "Jornada 2 - Partido 1",
   fecha: "Miércoles, 04/12 - 21:00",
