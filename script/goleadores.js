@@ -1,16 +1,23 @@
 const jugadores = [
+  // Kiosco J.
   { nombre: "Guillermo Godoy", equipo: "Kiosco J.", pts: 35, faltas: 6 },
   { nombre: "Cristian Rausch", equipo: "Kiosco J.", pts: 26, faltas: 1 },
   { nombre: "Lautaro Fitz", equipo: "Kiosco J.", pts: 26, faltas: 7 },
   { nombre: "Hector Stanco", equipo: "Kiosco J.", pts: 23, faltas: 7 },
-
+  //La Liga
   { nombre: "Juan Cruz Barberan", equipo: "La Liga", pts: 19, faltas: 2 },
   { nombre: "Julian Arturo Romero", equipo: "La Liga", pts: 29, faltas: 5 },
-
-  { nombre: "Ivan Bolaño", equipo: "Goyin", pts: 24, faltas: 0 },
+  //Goyin
+  { nombre: "Ivan Bolaño", equipo: "Goyin", pts: 37, faltas: 2 },
   { nombre: "Maximiliano Redruello", equipo: "La Liga", pts: 24, faltas: 1 },
-  { nombre: "Lucas Matias Hanke", equipo: "El Bunker", pts: 24, faltas: 3 },
-  { nombre: "Francisco Albarellos", equipo: "El Bunker", pts: 31, faltas: 6 }
+  //El Bunker
+  { nombre: "Lucas Matias Hanke", equipo: "El Bunker", pts: 45, faltas: 5 },
+  { nombre: "Francisco Albarellos", equipo: "El Bunker", pts: 31, faltas: 6 },
+  // 4M Dist.
+  { nombre: "Juan M. Montanar", equipo: "4M Dist.", pts: 26, faltas: 4 },
+  { nombre: "Gonzalo Spikerman", equipo: "4M Dist.", pts: 26, faltas: 5 },
+  //Abu Castor
+  { nombre: "Omar F. Staffolani", equipo: "Abu Castor", pts: 30, faltas: 3 }
 ];
 
 // Función para ordenar jugadores
