@@ -1,6 +1,6 @@
 // 1- Actualizar Contenido de Noticias Slider
-const text1 = 'Kiosco Josefina gana su segundo partido 94 - 80 a La Liga en la 2° Fecha del Torneo Comercial';
-const text2 = 'Goyin debuta ganando a El Bunker de Bella Vista por 9 puntos en el Torneo Comercial';
+const text1 = 'En la jornada 3, Goyin sigue demostrando mejor juego en el Torneo Comercial, gana a Abu Castor por 19 puntos';
+const text2 = 'El Bunker de Bella Vista se repone en su segundo enfrentamiento y vence a 4M Dist. 74 a 67';
 
 // 2- Cargar resultados de Fixture Slider
 const arrayFixture = [
@@ -10,8 +10,8 @@ const arrayFixture = [
   ['j2p1', 'Miércoles, 04/12 - 21:00',  'KIOSCO J.', 94, '05 Cristian Rausch (26)', 'LA LIGA', 80, ''],
   ['j2p2', 'Miércoles, 04/12 - 22:30', 'EL BUNKER', 72, '', 'GOYIN', 81, ''],
 
-  ['j3p1', 'Viernes, 06/12 - 21:00',  'ABU CASTOR', '--', '', 'GOYIN', '--', ''],
-  ['j3p2', 'Viernes, 06/12 - 22:30',  '4M DIST.', '--', '', 'EL BUNKER', '--', ''],
+  ['j3p1', 'Viernes, 06/12 - 21:00',  'ABU CASTOR', 62, '', 'GOYIN', 81, ''],
+  ['j3p2', 'Viernes, 06/12 - 22:30',  '4M DIST.', 67, '', 'EL BUNKER', 74, ''],
 
   ['j4p1', 'Miércoles, 11/12 - 21:00',  'KIOSCO J.', '--', '', 'ABU CASTOR', '--', ''],
   ['j4p2', 'Miércoles, 11/12 - 22:30',  '4M DIST.', '--', '', 'LA LIGA', '--', ''],
@@ -42,38 +42,38 @@ const arrayFixture = [
 
 // 3- Cargar las Noticias de Resultados de Último Partido
 const datosPartido1 = {
-  titulo: "Jornada 2 - Partido 1",
-  fecha: "Miércoles, 04/12 - 21:00",
+  titulo: "Jornada 3 - Partido 1",
+  fecha: "Viernes, 06/12 - 21:00",
   equipos: [
     {
-      nombre: "Kiosco J.",
-      imagen: "kioscoj",
-      jugador: "05 Cristian Rausch (26)"
-    },
-    {
-      nombre: "La Liga",
-      imagen: "laliga",
-      jugador: "14 Maximiliano Redruello (24)"
-    }
-  ],
-  marcador: { local: 94, visitante: 80 }
-};
-const datosPartido2 = {
-  titulo: "Jornada 2 - Partido 1",
-  fecha: "Miércoles, 04/12 - 22:30",
-  equipos: [
-    {
-      nombre: "El Bunker",
-      imagen: "elbunker",
-      jugador: "17 Francisco Albarellos (31)"
+      nombre: "Abu Castor",
+      imagen: "abucastor",
+      jugador: "07 Omar F. Staffolani (18)"
     },
     {
       nombre: "Goyin",
       imagen: "goyin",
-      jugador: "08 Ivan Bolaño (24)"
+      jugador: "08 Ivan Bolaño (13)"
     }
   ],
-  marcador: { local: 72, visitante: 81 }
+  marcador: { local: 62, visitante: 81 }
+};
+const datosPartido2 = {
+  titulo: "Jornada 3 - Partido 1",
+  fecha: datosPartido1.fecha,
+  equipos: [
+    {
+      nombre: "4M Dist.",
+      imagen: "4mdist",
+      jugador: "07 Gonzalo Spikerman (19)"
+    },
+    {
+      nombre: "El Bunker",
+      imagen: "elbunker",
+      jugador: "15 Lucas M. Hanke (21)"
+    }
+  ],
+  marcador: { local: 67, visitante: 74 }
 };
 
 
