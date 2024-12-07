@@ -114,10 +114,25 @@ function cambiarTextoEImagenes(datosPartido, idDiv) {
     console.error("No se encontraron suficientes elementos para equipos, jugadores o imágenes.");
   }
 
-  // Cambia el marcador final
-  matchResultDiv.querySelector('.sportsmagazine-match-score p').innerHTML =
-    `<strong class="sportsmagazine-color">${datosPartido.marcador.local}</strong> <small>:</small> ${datosPartido.marcador.visitante}`;
-};
+  const marcadorLocal = datosPartido.marcador.local;
+  const marcadorVisitante = datosPartido.marcador.visitante;
+  
+  let marcadorHTML;
+  
+  // Comparar los marcadores y asignar la clase al mayor
+  if (marcadorLocal > marcadorVisitante) {
+    marcadorHTML = `<strong class="sportsmagazine-color">${marcadorLocal}</strong> <small>:</small> ${marcadorVisitante}`;
+  } else if (marcadorVisitante > marcadorLocal) {
+    marcadorHTML = `${marcadorLocal} <small>:</small> <strong class="sportsmagazine-color">${marcadorVisitante}</strong>`;
+  } else {
+    // Si los marcadores son iguales, se podría aplicar algún estilo opcional o mantener sin resaltar.
+    marcadorHTML = `${marcadorLocal} <small>:</small> ${marcadorVisitante}`;
+  }
+  
+  // Asignar el HTML al elemento correspondiente
+  matchResultDiv.querySelector('.sportsmagazine-match-score p').innerHTML = marcadorHTML;
+  
+  };
 
 // Función para modificar el contenido
 document.addEventListener("DOMContentLoaded", function () {
