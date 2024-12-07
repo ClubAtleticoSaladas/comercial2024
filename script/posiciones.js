@@ -67,7 +67,7 @@ const equipos = [
     },
 ].map(equipo => ({
     ...equipo,
-    pts: equipo.pg * 3 + equipo.pp, // Calcula puntos
+    pts: equipo.pg * 2 + equipo.pp, // Calcula puntos
     dif: equipo.pf - equipo.pc,    // Calcula diferencia
 }));
 
