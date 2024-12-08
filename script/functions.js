@@ -94,7 +94,7 @@ jQuery(document).ready(function($) {
           slidesToShow: 1,
           slidesToScroll: 1,
           autoplay: true,
-          autoplaySpeed: 2000,
+          autoplaySpeed: 3000,
           infinite: true,
           dots: false,
           prevArrow: "<span class='slick-arrow-left'><i class='fa fa-angle-left'></i></span>",

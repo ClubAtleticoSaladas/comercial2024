@@ -57,7 +57,7 @@ const equipos = [
         pp: 2,
         pf: 54 + 67,
         pc: 70 + 74,
-        ft: 14 + 14,
+        ft: 14 + 15,
     },
 ].map(equipo => ({
     ...equipo,

@@ -1,79 +1,175 @@
-// 1- Actualizar Contenido de Noticias Slider
-const text1 = 'En la jornada 3, Goyin sigue demostrando mejor juego en el Torneo Comercial, gana a Abu Castor por 19 puntos';
-const text2 = 'El Bunker de Bella Vista se repone en su segundo enfrentamiento y vence a 4M Dist. 74 a 67';
+import { partidos } from './variables.js';
 
-// 2- Cargar resultados de Fixture Slider
-const arrayFixture = [
-  ['j1p1', 'Viernes, 29/11 - 21:00',  'KIOSCO J.', 70, '04 Guillermo Godoy (25)', '4M DIST.', 54, '08 José Martín Borda (11)'],
-  ['j1p2', 'Viernes, 29/11 - 22:30',  'LA LIGA', 63, '01 Mariano Y. Romero (17)', 'ABU CASTOR', 55, '06 Néstor Altamirano (15)'],
+const buscarPartidoPorId = (id) => {
+  const partidoEncontrado = partidos.find(partido => partido.id === id);
+  return partidoEncontrado;
+};
+// Jornada actuallizadad id
 
-  ['j2p1', 'Miércoles, 04/12 - 21:00',  'KIOSCO J.', 94, '05 Cristian Rausch (26)', 'LA LIGA', 80, ''],
-  ['j2p2', 'Miércoles, 04/12 - 22:30', 'EL BUNKER', 72, '', 'GOYIN', 81, ''],
+/// Filtrar los partidos con marcadores válidos
+const partidosValidos = partidos.filter(partido => partido.marcador1 !== "--" && partido.marcador2 !== "--");
 
-  ['j3p1', 'Viernes, 06/12 - 21:00',  'ABU CASTOR', 62, '', 'GOYIN', 81, ''],
-  ['j3p2', 'Viernes, 06/12 - 22:30',  '4M DIST.', 67, '', 'EL BUNKER', 74, ''],
+// Obtener el último y el penúltimo partido válido
+const ultimoPartido = partidosValidos.at(-1); // Último partido válido
+const penultimoPartido = partidosValidos.at(-2); // Penúltimo partido válido
 
-  ['j4p1', 'Miércoles, 11/12 - 21:00',  'KIOSCO J.', '--', '', 'ABU CASTOR', '--', ''],
-  ['j4p2', 'Miércoles, 11/12 - 22:30',  '4M DIST.', '--', '', 'LA LIGA', '--', ''],
+// Encontrar el índice del último partido válido en el arreglo original
+const indiceUltimo = partidos.findIndex(partido => partido.id === ultimoPartido.id);
 
-  ['j5p1', 'Viernes, 13/12 - 21:00',  'LA LIGA.', '--', '', 'EL BUNKER', '--', ''],
-  ['j5p2', 'Viernes, 13/12 - 22:30',  'KIOSCO J.', '--', '', 'GOYIN', '--', ''],
+// Obtener los dos partidos posteriores al último partido válido
+const primerPartidoPosterior = partidos[indiceUltimo + 1] || null; // Si existe, lo toma; si no, devuelve null
+const segundoPartidoPosterior = partidos[indiceUltimo + 2] || null; // Si existe, lo toma; si no, devuelve null
 
-  ['j6p1', 'Domingo, 15/12 - 20:00', 'ABU CASTOR', '--', '', 'EL BUNKER', '--', ''],
-  ['j6p2', 'Domingo, 15/12 - 21:30',  '4M DIST.', '--', '', 'GOYIN', '--', ''],
+const idJornadaPart1 = penultimoPartido.id;
+const idJornadaPart2 = ultimoPartido.id;
 
-  ['j7p1', 'Miércoles, 18/12 - 21:00',  'LA LIGA', '--', '', 'GOYIN', '--', ''],
-  ['j7p2', 'Miércoles, 18/12 - 22:30',  'KIOSCO J.', '--', '', 'EL BUNKER', '--', ''],
+// Actualiza Contenido de Noticias Slider (partido del día)
+function actualizarNoticias(id) {
+  const fechaActual = new Date();
+  const anio = fechaActual.getFullYear();
+  const meses = [
+    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+  ];
+  const mes = meses[fechaActual.getMonth()];
 
-  ['j8p1', 'Viernes, 20/12 - 21:00',  '4M DIST.', '--', '', 'ABU CASTOR', '--', ''],
-  // ['j8p2', 'Viernes, 20/12 - 22:30',  'Equipo1', '--', '', 'Equipo2', '--', ''],
+  const partidoEncontrado = buscarPartidoPorId(id);
 
-  ['s1p1', 'Domingo, 22/12 - 20:00',  '2° PUESTO', '--', '', '3° PUESTO', '--', ''],
-  ['s1p2', 'Domingo, 22/12 - 21:30',  '1° PUESTO', '--', '', '4° PUESTO', '--', ''],
+  let equipoGana = partidoEncontrado.equipo1;
+  let ptsGanador = partidoEncontrado.marcador1;
+  let equipoPierde = partidoEncontrado.equipo2;
+  let ptsPerdedor = partidoEncontrado.marcador2;
+  const difPartido = partidoEncontrado.marcador1 - partidoEncontrado.marcador2;
+  if (difPartido < 0) {
+    equipoGana = partidoEncontrado.equipo2;
+    equipoPierde = partidoEncontrado.equipo1;
+    ptsGanador = partidoEncontrado.marcador2;
+    ptsPerdedor = partidoEncontrado.marcador1;
+  };
+  if (partidoEncontrado.partido == 1) {
+    // Texto nuevo que quieres agregar
+    const nuevoTexto1 = "En la jornada " + partidoEncontrado.jornada + " de la fase " + partidoEncontrado.fase + ", " + equipoGana +
+      " gana a " + equipoPierde + " por " + Math.abs(difPartido) + " puntos de diferencia.";
+    // Actualizar el primer slider
+    document.getElementById("fecha-1").textContent = `${mes} ${anio} >> C.A.S.`;
+    document.getElementById("text-1").textContent = nuevoTexto1;
+  } else if (partidoEncontrado.partido == 2) {
+    const nuevoTexto2 = "¡ En la fase " + partidoEncontrado.fase + " del partido " + partidoEncontrado.partido + " en el Torneo Comercial, " +
+      equipoGana + " vence a " + equipoPierde + " por " + ptsGanador + " a " + ptsPerdedor + "!";
+    // Actualizar el segundo slider
+    document.getElementById("fecha-2").textContent = `${mes} ${anio} >> C.A.S.`;
+    document.getElementById("text-2").textContent = nuevoTexto2;
+  };
+};
+actualizarNoticias(idJornadaPart1);
+actualizarNoticias(idJornadaPart2);
 
-  ['s2p1', 'A definir, --/-- - --:--',  '1° PUESTO', '--', '', '4° PUESTO', '--', ''],
-  ['s2p2', 'A definir, --/-- - --:--', '2° PUESTO', '--', '', '3° PUESTO', '--', ''],
+// Fixture Slider
+// Contenedor donde se añadirán los elementos
+const container = document.getElementById("juegos-container");
 
-  // ['d1p1', 'A definir, --/-- - --:--',  'Equipo 1', '--', '', 'Equipo 2', '--', ''],
-  // ['d1p2', 'A definir, --/-- - --:--',  'Equipo 3', '--', '', 'Equipo 4', '--', ''],
+// Recorrer los partidos y crear los elementos HTML
+partidos.forEach(partido => {
+  // Crear capa contenedora
+  const layer = document.createElement("div");
+  layer.classList.add("sportsmagazine-fixture-slider-layer");
+  layer.id = partido.id;
 
-  ['f1p1', 'A definir, --/-- - --:--', '1° FINALISTA', '--', '', '2° FINALISTA', '--', '']
-];
+  // Crear elemento de tiempo
+  const time = document.createElement("time");
+  const fechaFormateada = obtenerFecha(partido.fecha);
+  time.textContent = fechaFormateada;
 
+  // Crear lista para los equipos
+  const ul = document.createElement("ul");
+  ul.classList.add("sportsmagazine-bgcolor");
+
+  // Crear elementos de equipos
+  const liEquipo1 = document.createElement("li");
+  liEquipo1.classList.add("first-child");
+  liEquipo1.innerHTML = `${partido.equipo1}<span>${partido.marcador1 !== "--" ? partido.marcador1 : "--"}</span>`;
+
+  const liEquipo2 = document.createElement("li");
+  liEquipo2.innerHTML = `${partido.equipo2}<span>${partido.marcador2 !== "--" ? partido.marcador2 : "--"}</span>`;
+
+  // Añadir los elementos al DOM
+  ul.appendChild(liEquipo1);
+  ul.appendChild(liEquipo2);
+  layer.appendChild(time);
+  layer.appendChild(ul);
+  container.appendChild(layer);
+});
+
+// Función para determinar cómo mostrar la fecha
+function obtenerFecha(fecha) {
+  if (typeof fecha === "string") {
+    if (!isNaN(Date.parse(fecha))) {
+      // Si es un string ISO válido, formatearlo
+      return formatearFecha(new Date(fecha));
+    } else {
+      // Si no es un string ISO, devolver el string tal cual
+      return fecha;
+    }
+  } else {
+    // Si no es ni string ni válido, devolver un texto por defecto
+    return "Fecha no válida";
+  }
+}
+
+// Función para formatear la fecha al estilo "Viernes, 28/05 - 20:00"
+function formatearFecha(fecha) {
+  const opcionesFecha = { weekday: 'long', day: '2-digit', month: '2-digit' };
+  const opcionesHora = { hour: '2-digit', minute: '2-digit', hour12: false };
+
+  // Obtener las partes formateadas
+  let fechaFormateada = new Intl.DateTimeFormat('es-ES', opcionesFecha).format(fecha);
+  const horaFormateada = new Intl.DateTimeFormat('es-ES', opcionesHora).format(fecha);
+
+  // Capitalizar la primera letra del día
+  fechaFormateada = fechaFormateada.charAt(0).toUpperCase() + fechaFormateada.slice(1);
+
+  // Combinar fecha y hora
+  return `${fechaFormateada} - ${horaFormateada}`;
+};
+
+
+console.log()
+const p1 = penultimoPartido;
+const p2 = ultimoPartido;
 // 3- Cargar las Noticias de Resultados de Último Partido
 const datosPartido1 = {
-  titulo: "Jornada 3 - Partido 1",
-  fecha: "Viernes, 06/12 - 21:00",
+  titulo: "Jornada " + p1.jornada + " - Partido" + p1.partido,
+  fecha: formatearFecha(new Date(p1.fecha)),
   equipos: [
     {
-      nombre: "Abu Castor",
-      imagen: "abucastor",
-      jugador: "07 Omar F. Staffolani (18)"
+      nombre: p1.equipo1,
+      imagen: p1.equipo1.replace(/\s+/g, '').replace(/\./g, '').toLowerCase(),
+      jugador: p1.goleador1
     },
     {
-      nombre: "Goyin",
-      imagen: "goyin",
-      jugador: "08 Ivan Bolaño (13)"
+      nombre: p1.equipo2,
+      imagen: p1.equipo2.replace(/\s+/g, '').replace(/\./g, '').toLowerCase(),
+      jugador: p1.goleador2
     }
   ],
-  marcador: { local: 62, visitante: 81 }
+  marcador: { local: p1.marcador1, visitante: p1.marcador2 }
 };
 const datosPartido2 = {
-  titulo: "Jornada 3 - Partido 1",
-  fecha: datosPartido1.fecha,
+  titulo: "Jornada " + p2.jornada + " - Partido" + p2.partido,
+  fecha: formatearFecha(new Date(p2.fecha)),
   equipos: [
     {
-      nombre: "4M Dist.",
-      imagen: "4mdist",
-      jugador: "07 Gonzalo Spikerman (19)"
+      nombre: p2.equipo1,
+      imagen: p2.equipo1.replace(/\s+/g, '').replace(/\./g, '').toLowerCase(),
+      jugador: p2.goleador1
     },
     {
-      nombre: "El Bunker",
-      imagen: "elbunker",
-      jugador: "15 Lucas M. Hanke (21)"
+      nombre: p2.equipo2,
+      imagen: p2.equipo2.replace(/\s+/g, '').replace(/\./g, '').toLowerCase(),
+      jugador: p2.goleador2
     }
   ],
-  marcador: { local: 67, visitante: 74 }
+  marcador: { local: p2.marcador1, visitante: p2.marcador2 }
 };
 
 
@@ -116,9 +212,9 @@ function cambiarTextoEImagenes(datosPartido, idDiv) {
 
   const marcadorLocal = datosPartido.marcador.local;
   const marcadorVisitante = datosPartido.marcador.visitante;
-  
+
   let marcadorHTML;
-  
+
   // Comparar los marcadores y asignar la clase al mayor
   if (marcadorLocal > marcadorVisitante) {
     marcadorHTML = `<strong class="sportsmagazine-color">${marcadorLocal}</strong> <small>:</small> ${marcadorVisitante}`;
@@ -128,77 +224,131 @@ function cambiarTextoEImagenes(datosPartido, idDiv) {
     // Si los marcadores son iguales, se podría aplicar algún estilo opcional o mantener sin resaltar.
     marcadorHTML = `${marcadorLocal} <small>:</small> ${marcadorVisitante}`;
   }
-  
+
   // Asignar el HTML al elemento correspondiente
   matchResultDiv.querySelector('.sportsmagazine-match-score p').innerHTML = marcadorHTML;
-  
-  };
-
-// Función para modificar el contenido
-document.addEventListener("DOMContentLoaded", function () {
-  actualizarContenido('fecha-1', 'text-1', text1);
-  actualizarContenido('fecha-2', 'text-2', text2);
-});
-
-// Actualización de jornada
-document.addEventListener('DOMContentLoaded', () => {
-  arrayFixture.forEach(fixture => {
-    const [jornadaId, nuevaFecha, equipo1, puntos1, jugador1, equipo2, puntos2, jugador2] = fixture;
-    actualizarFixture(jornadaId, nuevaFecha, equipo1, puntos1, jugador1, equipo2, puntos2, jugador2);
-  });
-});
-
-function actualizarContenido(idFecha, idTexto, nuevoTexto) {
-  // Obtener la fecha actual
-  const fecha = new Date();
-
-  // Opciones de formato para día, mes y año
-  const opciones = { day: '2-digit', month: 'long', year: 'numeric' };
-
-  // Formatear la fecha en español
-  const fechaFormateada = fecha.toLocaleDateString('es-ES', opciones);
-
-  // Actualizar la fecha
-  const elementoFecha = document.getElementById(idFecha);
-  if (elementoFecha) {
-    elementoFecha.innerHTML = `${fechaFormateada} / C.A.S.`;
-  } else {
-    console.warn(`Elemento con ID '${idFecha}' no encontrado`);
-  }
-
-  // Actualizar el texto del título
-  const elementoTexto = document.getElementById(idTexto);
-  if (elementoTexto) {
-    elementoTexto.innerHTML = nuevoTexto;
-  } else {
-    console.warn(`Elemento con ID '${idTexto}' no encontrado`);
-  }
 };
 
+const partidosValidos2 = partidos.filter(
+  p => p.fase === 'regular' && p.marcador1 !== '--' && p.marcador2 !== '--'
+);
 
-function actualizarFixture(jornadaId, nuevaFecha, equipo1, puntos1, jugador1, equipo2, puntos2, jugador2) {
-  const jornada = document.getElementById(jornadaId);
-  if (!jornada) return console.warn(`Jornada "${jornadaId}" no encontrada`);
+const estadisticas = {};
 
-  const timeElement = jornada.querySelector('time');
-  if (timeElement) {
-    timeElement.innerText = nuevaFecha;
+partidosValidos2.forEach(partido => {
+  const { equipo1, marcador1, faltas1, equipo2, marcador2, faltas2 } = partido;
+
+  // Función para generar el nombre de la imagen
+  const generarImagen = equipo => 
+    `images/equipos/${equipo.toLowerCase().replace(/\s+/g, '').replace(/\./g, '')}G.png`;
+
+  // Inicializar equipos si no están en las estadísticas
+  if (!estadisticas[equipo1]) {
+    estadisticas[equipo1] = { 
+      ciudad: partido.ciudad1, // Tomar ciudad del equipo1
+      imagen: generarImagen(equipo1), // Generar imagen
+      jugados: 0, 
+      ganados: 0, 
+      perdidos: 0, 
+      puntos: 0, 
+      aFavor: 0, 
+      enContra: 0, 
+      faltas: 0 
+    };
+  }
+  if (!estadisticas[equipo2]) {
+    estadisticas[equipo2] = { 
+      ciudad: partido.ciudad2, // Tomar ciudad del equipo2
+      imagen: generarImagen(equipo2), // Generar imagen
+      jugados: 0, 
+      ganados: 0, 
+      perdidos: 0, 
+      puntos: 0, 
+      aFavor: 0, 
+      enContra: 0, 
+      faltas: 0 
+    };
   }
 
-  const equipos = jornada.querySelectorAll('.sportsmagazine-bgcolor li');
-  if (equipos.length === 2) {
-    equipos[0].innerHTML = `${equipo1} <span>${puntos1}</span>`;
-    equipos[1].innerHTML = `${equipo2} <span>${puntos2}</span>`;
-  }
-};
+  // Actualizar partidos jugados
+  estadisticas[equipo1].jugados++;
+  estadisticas[equipo2].jugados++;
 
-function ordenarJugadores(jugadores) {
-  return jugadores.sort((a, b) => {
-    if (b.pts !== a.pts) {
-      return b.pts - a.pts; // Ordenar por puntos descendente
-    } else {
-      return a.faltas - b.faltas; // Ordenar por faltas ascendente
-    }
+  // Actualizar marcadores y faltas
+  estadisticas[equipo1].aFavor += marcador1;
+  estadisticas[equipo1].enContra += marcador2;
+  estadisticas[equipo1].faltas += faltas1 ? parseInt(faltas1) : 0;
+
+  estadisticas[equipo2].aFavor += marcador2;
+  estadisticas[equipo2].enContra += marcador1;
+  estadisticas[equipo2].faltas += faltas2 ? parseInt(faltas2) : 0;
+
+  // Determinar ganadores y perdedores
+  if (marcador1 > marcador2) {
+    estadisticas[equipo1].ganados++;
+    estadisticas[equipo2].perdidos++;
+  } else if (marcador1 < marcador2) {
+    estadisticas[equipo1].perdidos++;
+    estadisticas[equipo2].ganados++;
+  }
+});
+
+// Calcular puntos y diferencia de marcadores
+Object.keys(estadisticas).forEach(equipo => {
+  const stats = estadisticas[equipo];
+  stats.puntos = stats.ganados * 2 + stats.perdidos;
+  stats.diferencia = stats.aFavor - stats.enContra;
+});
+
+// Clasificación por puntos, diferencia de marcadores y menor cantidad de faltas
+const clasificacion = Object.entries(estadisticas)
+  .map(([equipo, stats]) => ({ equipo, ...stats }))
+  .sort((a, b) => 
+    b.puntos - a.puntos || // Primero por puntos
+    b.diferencia - a.diferencia || // Luego por diferencia de marcadores
+    a.faltas - b.faltas // Finalmente por menor cantidad de faltas
+  );
+
+function renderClasificacion(clasificacion) {
+  const widget = document.querySelector(".widget_team_ranking");
+
+  // Vaciar contenido existente
+  widget.innerHTML = `
+    <div class="sportsmagazine-fancy-title">
+      <h2>Clasificaciones de equipos</h2>
+    </div>
+    <div class="ranking-title-table">
+      <ul class="ranking-title-row">
+        <li>Posiciones</li>
+        <li>PTS</li>
+        <li>PJ</li>
+        <li>PG</li>
+      </ul>
+    </div>
+  `;
+
+  // Generar filas dinámicas
+  clasificacion.forEach((equipo, index) => {
+    const rankingContent = document.createElement("div");
+    rankingContent.className = "ranking-content-table";
+    rankingContent.innerHTML = `
+      <ul class="ranking-content-row">
+        <li>${index + 1}</li>
+        <li>
+          <img src="${equipo.imagen}" alt="">
+          <div class="ranking-logo">
+            <span>${equipo.equipo}</span>
+            <small>${equipo.ciudad}</small>
+          </div>
+        </li>
+        <li>${equipo.puntos.toString().padStart(2, "0")}</li>
+        <li>${equipo.jugados.toString().padStart(2, "0")}</li>
+        <li>${equipo.ganados.toString().padStart(2, "0")}</li>
+      </ul>
+    `;
+    widget.appendChild(rankingContent);
   });
 }
 
+// Renderizar al cargar la página
+document.addEventListener("DOMContentLoaded", () => renderClasificacion(clasificacion));
