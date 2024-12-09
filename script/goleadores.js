@@ -1,24 +1,4 @@
-const jugadores = [
-  // Kiosco J.
-  { nombre: "Cristian Rausch", equipo: "Kiosco J.", ciudad: "Saladas",pts: 26, faltas: 1 },
-  { nombre: "Lautaro Fitz", equipo: "Kiosco J.", ciudad: "Saladas",pts: 26, faltas: 7 },
-  { nombre: "Guillermo Godoy", equipo: "Kiosco J.", ciudad: "Saladas", pts: 35, faltas: 6 },
-  { nombre: "Hector Stanco", equipo: "Kiosco J.",ciudad: "Saladas", pts: 23, faltas: 7 },
-  //La Liga
-  { nombre: "Juan Cruz Barberan", equipo: "La Liga",ciudad: "Saladas", pts: 19, faltas: 2 },
-  { nombre: "Julian Arturo Romero", equipo: "La Liga",ciudad: "Saladas", pts: 29, faltas: 5 },
-  //Goyin
-  { nombre: "Ivan Bolaño", equipo: "Goyin", ciudad: "Saladas",pts: 37, faltas: 2 },
-  { nombre: "Maximiliano Redruello", equipo: "La Liga", ciudad: "Saladas",pts: 24, faltas: 1 },
-  //El Bunker
-  { nombre: "Lucas Matias Hanke", equipo: "El Bunker",ciudad: "Bella Vista", pts: 45, faltas: 5 },
-  { nombre: "Francisco Albarellos", equipo: "El Bunker", ciudad: "Bella Vista",pts: 31, faltas: 6 },
-  // 4M Dist.
-  { nombre: "Juan M. Montanar", equipo: "4M Dist.", ciudad: "Saladas",pts: 26, faltas: 4 },
-  { nombre: "Gonzalo Spikerman", equipo: "4M Dist.", ciudad: "Saladas",pts: 26, faltas: 5 },
-  //Abu Castor
-  { nombre: "Omar F. Staffolani", equipo: "Abu Castor", ciudad: "Saladas",pts: 30, faltas: 3 }
-];
+import { jugadores } from './variables.js'
 
 // Función para ordenar jugadores
 function ordenarJugadores(jugadores) {
