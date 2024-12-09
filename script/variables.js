@@ -36,4 +36,5 @@ export const partidos = [
     { id: "j12p1", jornada: 12, partido: 1, fase: 'final', fecha: "A definir, --/-- - --:--", equipo1: "Finalista 1", ciudad1: "-----", marcador1: "--", faltas1: "", goleador1: "-- Jugador1 (--)", equipo2: "Finalista 2", ciudad2: "-----", marcador2: "--", faltas2: "", goleador2: "-- Jugador2 (--)" }
     //, { id: "j12p2", jornada: 12, partido: 2, fase: 'final', fecha: "A definir, --/-- - --:--", equipo1: "Finalista 2", ciudad1:"-----",marcador1: "--", faltas1: "", goleador1: "-- Jugador2 (--)", equipo2: "Finalista 1",ciudad2:"-----", marcador2: "--", faltas2: "", goleador2: "-- Jugador1 (--)" }
 ];
- 
+
+

@@ -132,8 +132,6 @@ function formatearFecha(fecha) {
   return `${fechaFormateada} - ${horaFormateada}`;
 };
 
-
-console.log()
 const p1 = penultimoPartido;
 const p2 = ultimoPartido;
 // 3- Cargar las Noticias de Resultados de Último Partido
@@ -239,34 +237,34 @@ partidosValidos2.forEach(partido => {
   const { equipo1, marcador1, faltas1, equipo2, marcador2, faltas2 } = partido;
 
   // Función para generar el nombre de la imagen
-  const generarImagen = equipo => 
+  const generarImagen = equipo =>
     `images/equipos/${equipo.toLowerCase().replace(/\s+/g, '').replace(/\./g, '')}G.png`;
 
   // Inicializar equipos si no están en las estadísticas
   if (!estadisticas[equipo1]) {
-    estadisticas[equipo1] = { 
+    estadisticas[equipo1] = {
       ciudad: partido.ciudad1, // Tomar ciudad del equipo1
       imagen: generarImagen(equipo1), // Generar imagen
-      jugados: 0, 
-      ganados: 0, 
-      perdidos: 0, 
-      puntos: 0, 
-      aFavor: 0, 
-      enContra: 0, 
-      faltas: 0 
+      jugados: 0,
+      ganados: 0,
+      perdidos: 0,
+      puntos: 0,
+      aFavor: 0,
+      enContra: 0,
+      faltas: 0
     };
   }
   if (!estadisticas[equipo2]) {
-    estadisticas[equipo2] = { 
+    estadisticas[equipo2] = {
       ciudad: partido.ciudad2, // Tomar ciudad del equipo2
       imagen: generarImagen(equipo2), // Generar imagen
-      jugados: 0, 
-      ganados: 0, 
-      perdidos: 0, 
-      puntos: 0, 
-      aFavor: 0, 
-      enContra: 0, 
-      faltas: 0 
+      jugados: 0,
+      ganados: 0,
+      perdidos: 0,
+      puntos: 0,
+      aFavor: 0,
+      enContra: 0,
+      faltas: 0
     };
   }
 
@@ -303,7 +301,7 @@ Object.keys(estadisticas).forEach(equipo => {
 // Clasificación por puntos, diferencia de marcadores y menor cantidad de faltas
 const clasificacion = Object.entries(estadisticas)
   .map(([equipo, stats]) => ({ equipo, ...stats }))
-  .sort((a, b) => 
+  .sort((a, b) =>
     b.puntos - a.puntos || // Primero por puntos
     b.diferencia - a.diferencia || // Luego por diferencia de marcadores
     a.faltas - b.faltas // Finalmente por menor cantidad de faltas
@@ -352,3 +350,85 @@ function renderClasificacion(clasificacion) {
 
 // Renderizar al cargar la página
 document.addEventListener("DOMContentLoaded", () => renderClasificacion(clasificacion));
+
+const pprox1 = primerPartidoPosterior;
+const pprox2 = segundoPartidoPosterior;
+// Datos de los próximos partidos
+const proximosPartidos = [
+  {
+    jornada: "Jornada " + pprox1.jornada + " - Partido " + pprox1.partido,
+    dia: formatearFecha(new Date(pprox1.fecha)),
+    hora: extraeHora(pprox1.fecha),
+    estadio: "Estadio: “Juan G. Noya”",
+    equipo1: { nombre: pprox1.equipo1, ciudad: pprox1.ciudad1, imagen: `images/equipos/${pprox1.equipo1.toLowerCase().replace(/\s+/g, '').replace(/\./g, '')}G.png` },
+    equipo2: { nombre: pprox1.equipo2, ciudad: pprox1.ciudad2, imagen: `images/equipos/${pprox1.equipo2.toLowerCase().replace(/\s+/g, '').replace(/\./g, '')}G.png` },
+  },
+  {
+    jornada: "Jornada " + pprox2.jornada + " - Partido " + pprox2.partido,
+    dia: formatearFecha(new Date(pprox2.fecha)),
+    hora: extraeHora(pprox2.fecha),
+    estadio: "Estadio: “Juan G. Noya”",
+    equipo1: { nombre: pprox2.equipo1, ciudad: pprox2.ciudad1, imagen: `images/equipos/${pprox2.equipo1.toLowerCase().replace(/\s+/g, '').replace(/\./g, '')}G.png` },
+    equipo2: { nombre: pprox2.equipo2, ciudad: pprox2.ciudad2, imagen: `images/equipos/${pprox2.equipo2.toLowerCase().replace(/\s+/g, '').replace(/\./g, '')}G.png` },
+  }
+];
+
+// Función para actualizar el HTML
+function actualizarProximosPartidos(partidos) {
+  const widget = document.querySelector(".widget_next_match"); // Selecciona el widget
+  widget.innerHTML = ""; // Limpia el contenido existente
+
+  partidos.forEach(partido => {
+    // Crear la estructura de HTML para cada partido
+    const partidoHtml = `
+      <div class="widget_next_match_title">
+         <div class="sportsmagazine-fancy-title">
+          <h2>Próximo partido</h2>
+        </div>
+        <h5>${partido.jornada}</h5>
+        <span>${partido.dia} <strong>*</strong></span>
+      </div>
+      <ul>
+        <li>
+          <img src="${partido.equipo1.imagen}" alt="" width="100" height="100" 
+               style="object-fit: cover !important; display: block;">
+          <h6><a href="#">${partido.equipo1.nombre}</a></h6>
+          <small>${partido.equipo1.ciudad}</small>
+        </li>
+        <li>
+          <div class="widget_next_match_option">
+            <h6>${partido.hora}</h6>
+            <small>${partido.estadio}</small>
+          </div>
+        </li>
+        <li>
+          <img src="${partido.equipo2.imagen}" alt="" width="100" height="100" 
+               style="object-fit: cover !important; display: block;">
+          <h6><a href="#">${partido.equipo2.nombre}</a></h6>
+          <small>${partido.equipo2.ciudad}</small>
+        </li>
+      </ul>
+    `;
+    // Agregar al widget
+    widget.innerHTML += partidoHtml;
+  });
+
+  // Agregar la nota final
+  widget.innerHTML += `
+    <div class="widget_next_match_title">
+      <span style="display: block; text-align: justify;">
+        <strong>*</strong> Todos los días y horarios de los partidos de cada jornada están sujetos a modificaciones por cuestiones climáticas y otras circunstancias imprevistas.
+      </span>
+    </div>
+  `;
+}
+
+function extraeHora(date) {
+  const fecha = date;
+  const fechaObj = new Date(fecha.replace(" ", "T")); // Convertir la cadena a un objeto Date
+  const hora = fechaObj.toTimeString().slice(0, 5); // Extraer HH:mm
+  return hora;
+};
+
+// Llamar a la función para actualizar
+actualizarProximosPartidos(proximosPartidos);
