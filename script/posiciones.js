@@ -1,101 +1,153 @@
-const equipos = [
-    {
-        nombre: "KIOSCO J.",
-        ciudad: "Saladas",
-        img: "images/equipos/kioscojG.png",
-        pg: 2,
-        pp: 0,
-        pf: 70 + 94,
-        pc: 54 + 80,
-        ft: 23 + 20,
-    },
-    {
-        nombre: "LA LIGA",
-        ciudad: "Saladas",
-        img: "images/equipos/laligaG.png",
-        pg: 1,
-        pp: 1,
-        pf: 63 + 80,
-        pc: 55 + 94,
-        ft: 15 + 13,
-    },
-    {
-        nombre: "GOYIN",
-        ciudad: "Saladas",
-        img: "images/equipos/goyinG.png",
-        pg: 2,
-        pp: 0,
-        pf: 81 + 81,
-        pc: 72 + 62,
-        ft: 12 + 11,
-    },
-    {
-        nombre: "ABU CASTOR",
-        ciudad: "Saladas",
-        img: "images/equipos/abucastorG.png",
-        pg: 0,
-        pp: 2,
-        pf: 55 + 62,
-        pc: 63 + 81,
-        ft: 14 + 10,
-    },
-    {
-        nombre: "EL BUNKER",
-        ciudad: "Bella Vista",
-        img: "images/equipos/elbunkerG.png",
-        pg: 1,
-        pp: 1,
-        pf: 72 + 74,
-        pc: 81 + 67,
-        ft: 12 + 15,
-    },
-    {
-        nombre: "4M DIST.",
-        ciudad: "Saladas",
-        img: "images/equipos/4mdistG.png",
-        pg: 0,
-        pp: 2,
-        pf: 54 + 67,
-        pc: 70 + 74,
-        ft: 14 + 15,
-    },
-].map(equipo => ({
-    ...equipo,
-    pj: equipo.pg + equipo.pp,      // Calcula partidos jugados
-    pts: equipo.pg * 2 + equipo.pp, // Calcula puntos
-    dif: equipo.pf - equipo.pc,     // Calcula diferencia
-}));
+import { partidos } from './variables.js'
+
+const procesarEquipos = (partidos) => {
+    const equipos = {};
+
+    partidos.forEach(({ equipo1, ciudad1, marcador1, faltas1, equipo2, ciudad2, marcador2, faltas2 }) => {
+        // Filtrar equipos no válidos
+        const equiposInvalidos = ["Equipo 1", "Equipo 2", "1° Puesto", "2° Puesto", "3° Puesto", "4° Puesto", "Finalista 1", "Finalista 2"];
+        if (equiposInvalidos.includes(equipo1) || equiposInvalidos.includes(equipo2)) return;
+
+        // Generar identificador único para cada equipo
+        const generarIdentificador = (equipo) =>
+            equipo.toLowerCase().replace(/\s/g, "").replace(/\./g, "");
+
+        // Inicializar equipos si no están
+        if (!equipos[equipo1]) {
+            equipos[equipo1] = {
+                identificador: "images/equipos/"+generarIdentificador(equipo1)+"G.png",
+                ciudad: ciudad1,
+                partidosJugados: 0,
+                ganados: 0,
+                perdidos: 0,
+                puntos: 0,
+                marcadorAFavor: 0,
+                marcadorEnContra: 0,
+                faltasTotales: 0,
+            };
+        }
+        if (!equipos[equipo2]) {
+            equipos[equipo2] = {
+                identificador: "images/equipos/"+generarIdentificador(equipo2)+"G.png",
+                ciudad: ciudad2,
+                partidosJugados: 0,
+                ganados: 0,
+                perdidos: 0,
+                puntos: 0,
+                marcadorAFavor: 0,
+                marcadorEnContra: 0,
+                faltasTotales: 0,
+            };
+        }
+
+        // Si no hay marcador válido, no procesar el partido
+        if (marcador1 === "--" || marcador2 === "--") return;
+
+        // Convertir marcadores y faltas a números
+        const marcador1Num = parseInt(marcador1, 10);
+        const marcador2Num = parseInt(marcador2, 10);
+        const faltas1Num = parseInt(faltas1, 10) || 0;
+        const faltas2Num = parseInt(faltas2, 10) || 0;
+
+        // Actualizar datos para equipo1
+        equipos[equipo1].partidosJugados++;
+        equipos[equipo1].marcadorAFavor += marcador1Num;
+        equipos[equipo1].marcadorEnContra += marcador2Num;
+        equipos[equipo1].faltasTotales += faltas1Num;
+        if (marcador1Num > marcador2Num) {
+            equipos[equipo1].ganados++;
+            equipos[equipo1].puntos += 2;
+        } else {
+            equipos[equipo1].perdidos++;
+            equipos[equipo1].puntos ++;
+        }
+
+        // Actualizar datos para equipo2
+        equipos[equipo2].partidosJugados++;
+        equipos[equipo2].marcadorAFavor += marcador2Num;
+        equipos[equipo2].marcadorEnContra += marcador1Num;
+        equipos[equipo2].faltasTotales += faltas2Num;
+        if (marcador2Num > marcador1Num) {
+            equipos[equipo2].ganados++;
+            equipos[equipo2].puntos += 2;
+        } else {
+            equipos[equipo2].perdidos++;
+            equipos[equipo2].puntos ++;
+        }
+    });
+
+    // Calcular diferencia de marcador
+    for (const equipo in equipos) {
+        equipos[equipo].diferencia = equipos[equipo].marcadorAFavor - equipos[equipo].marcadorEnContra;
+    }
+
+    // Convertir objeto a array
+    const resultados = Object.entries(equipos).map(([nombre, datos]) => ({ nombre, ...datos }));
+
+    return resultados;
+};
+
+const resultados = procesarEquipos(partidos);
 
 
-equipos.sort((a, b) => {
-    if (b.pts !== a.pts) return b.pts - a.pts; // Primero, por puntos
-    if (b.dif !== a.dif) return b.dif - a.dif; // Luego, por diferencia de puntos
-    return a.ft - b.ft; // Finalmente, por faltas totales
-});
+const evaluarPosiciones = (equipos) => {
+    return equipos.sort((a, b) => {
+        // 1. Mayor cantidad de puntos
+        if (b.puntos !== a.puntos) return b.puntos - a.puntos;
 
-const tableBody = document.querySelector("#tablePos table");
+        // 2. Menor diferencia de marcadores
+        if (b.diferencia !== a.diferencia) return b.diferencia - a.diferencia;
 
-equipos.forEach((equipo, index) => {
-    const row = document.createElement("tr");
-    // Alternar colores directamente con valores hexadecimales
-    row.style.backgroundColor = index % 2 === 0 ? "#ffffff" : "#f0f0f0";
-    row.innerHTML = `
-        <td>${String(index + 1).padStart(2, "0")}</td>
+        // 3. Menor cantidad de faltas totales
+        if (a.faltasTotales !== b.faltasTotales) return a.faltasTotales - b.faltasTotales;
+
+        // 4. Mayor cantidad de puntos a favor
+        if (b.marcadorAFavor !== a.marcadorAFavor) return b.marcadorAFavor - a.marcadorAFavor;
+
+        // 5. Menor cantidad de puntos en contra
+        return a.marcadorEnContra - b.marcadorEnContra;
+    });
+};
+
+
+// Generar y ordenar los equipos según las posiciones
+const posiciones = evaluarPosiciones(resultados);
+
+// Seleccionar el contenedor de la tabla
+const tablaBody = document.querySelector("#tablePos tbody");
+
+// Generar las filas de la tabla con colores alternos y estructura personalizada
+posiciones.forEach((equipo, index) => {
+    const fila = document.createElement("tr");
+
+    // Alternar el color de fondo usando el atributo `style`
+    fila.setAttribute(
+        "style",
+        `background-color: ${index % 2 === 0 ? "#ffffff" : "#f2f2f2"};`
+    );
+
+    // Crear estructura de la fila
+    fila.innerHTML = `
+        <td>${index + 1}</td> <!-- POS -->
         <td>
-            <figure><img src="${equipo.img}" alt="${equipo.nombre}"></figure>
+            <figure>
+                <img src="${equipo.identificador}" alt="${equipo.nombre}">
+            </figure>
             <div class="player-stats-text">
                 <h6>${equipo.nombre}</h6>
                 <span>${equipo.ciudad}</span>
             </div>
-        </td>
-        <td>${equipo.pts}</td>
-        <td>${equipo.pj}</td>
-        <td>${equipo.pg}</td>
-        <td>${equipo.pp}</td>
-        <td>${equipo.pf}</td>
-        <td>${equipo.pc}</td>
-        <td>${equipo.dif > 0 ? `+${equipo.dif}` : equipo.dif}</td>
-        <td>${equipo.ft}</td>
+        </td> <!-- Equipo -->
+        <td>${equipo.puntos}</td> <!-- Pts -->
+        <td>${equipo.partidosJugados}</td> <!-- PJ -->
+        <td>${equipo.ganados}</td> <!-- PG -->
+        <td>${equipo.perdidos}</td> <!-- PP -->
+        <td>${equipo.marcadorAFavor}</td> <!-- PF -->
+        <td>${equipo.marcadorEnContra}</td> <!-- PC -->
+        <td>${equipo.diferencia}</td> <!-- DIF -->
+        <td>${equipo.faltasTotales}</td> <!-- FT -->
     `;
-    tableBody.appendChild(row);
+
+    // Agregar la fila al tbody de la tabla
+    tablaBody.appendChild(fila);
 });

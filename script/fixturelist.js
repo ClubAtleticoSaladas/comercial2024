@@ -199,8 +199,10 @@ function loadFixtures(fixtures) {
             let libres = "";
             if (indice < mensajesLibres.length) {
                 libres = mensajesLibres[indice];
-            }
-           
+            } else {
+                libres = ">> " + fixture.jornada;
+            };
+
             jornadaHeader.innerHTML = `
                 <p><strong>${libres}</strong></p>
                 <hr> 
