@@ -54,7 +54,7 @@ function actualizarNoticias(id) {
     document.getElementById("fecha-1").textContent = `${mes} ${anio} >> C.A.S.`;
     document.getElementById("text-1").textContent = nuevoTexto1;
   } else if (partidoEncontrado.partido == 2) {
-    const nuevoTexto2 = "¡ En la fase " + partidoEncontrado.fase + " del partido " + partidoEncontrado.partido + " en el Torneo Comercial, " +
+    const nuevoTexto2 = "¡En la fase " + partidoEncontrado.fase + " del partido " + partidoEncontrado.partido + " en el Torneo Comercial, " +
       equipoGana + " vence a " + equipoPierde + " por " + ptsGanador + " a " + ptsPerdedor + "!";
     // Actualizar el segundo slider
     document.getElementById("fecha-2").textContent = `${mes} ${anio} >> C.A.S.`;
