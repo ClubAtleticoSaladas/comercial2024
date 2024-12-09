@@ -1,293 +1,153 @@
-const fixtures = [
-    //Jornada #1
-    {
-        jornada: "Jornada # 1",
-        dateTime: "2024-11-29 21:00",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "Kiosco J.", location: "Saladas", logo: "images/equipos/kioscojG.png" },
-            score: "70 - 54",
-            team2: { name: "4M Dist.", location: "Saladas", logo: "images/equipos/4mdistG.png" }
-        },
-        partido: "Partido 1"
-    },
-    {
-        jornada: "Jornada # 1",
-        dateTime: "2024-11-29 22:30",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "La Liga", location: "Saladas", logo: "images/equipos/laligaG.png" },
-            score: "63 - 55",
-            team2: { name: "Abu Castor", location: "Saladas", logo: "images/equipos/abucastorG.png" }
-        },
-        partido: "Partido 2",
-        libres: "El Bunker y Goyin"
-    },
-    //Jornada #2
-    {
-        jornada: "Jornada # 2",
-        dateTime: "2024-12-04 21:00",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "Kiosco J.", location: "Saladas", logo: "images/equipos/kioscojG.png" },
-            score: "94 - 80",
-            team2: { name: "La Liga", location: "Saladas", logo: "images/equipos/laligaG.png" }
-        },
-        partido: "Partido 1"
-    },
-    {
-        jornada: "Jornada # 2",
-        dateTime: "2024-12-04 22:30",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "El Bunker", location: "Bella Vista", logo: "images/equipos/elbunkerG.png" },
-            score: "72 - 81",
-            team2: { name: "Goyin", location: "Saladas", logo: "images/equipos/goyinG.png" }
-        },
-        partido: "Partido 2",
-        libres: "4M Dist. y Abu Castor"
-    },
-    //Jornada #3
-    {
-        jornada: "Jornada # 3",
-        dateTime: "2024-12-06 21:00",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "Abu Castor", location: "Saladas", logo: "images/equipos/abucastorG.png" },
-            score: "62 - 81",
-            team2: { name: "Goyin", location: "Saladas", logo: "images/equipos/goyinG.png" }
-        },
-        partido: "Partido 1"
-    },
-    {
-        jornada: "Jornada # 3",
-        dateTime: "2024-12-06 22:30",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "4M Dist.", location: "Saladas", logo: "images/equipos/4mdistG.png" },
-            score: "67 - 74",
-            team2: { name: "El Bunker", location: "Bella Vista", logo: "images/equipos/elbunkerG.png" }
-        },
-        partido: "Partido 2",
-        libres: "Kiosco J. y La Liga"
-    },
-    //Jornada #4
-    {
-        jornada: "Jornada # 4",
-        dateTime: "2024-12-11 21:00",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "Kiosco J.", location: "Saladas", logo: "images/equipos/kioscojG.png" },
-            score: "-- - --",
-            team2: { name: "Abu Castor", location: "Saladas", logo: "images/equipos/abucastorG.png" }
-        },
-        partido: "Partido 1"
-    },
-    {
-        jornada: "Jornada # 4",
-        dateTime: "2024-12-11 22:30",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "4M Dist.", location: "Saladas", logo: "images/equipos/4mdistG.png" },
-            score: "-- - --",
-            team2: { name: "La Liga", location: "Saladas", logo: "images/equipos/laligaG.png" }
-        },
-        partido: "Partido 2",
-        libres: "El Bunker y Goyin"
-    },
-    //Jornada #5
-    {
-        jornada: "Jornada # 5",
-        dateTime: "2024-12-13 21:00",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "La Liga", location: "Saladas", logo: "images/equipos/laligaG.png" },
-            score: "-- - --",
-            team2: { name: "El Bunker", location: "Bella Vista", logo: "images/equipos/elbunkerG.png" }
-        },
-        partido: "Partido 1"
-    },
-    {
-        jornada: "Jornada # 5",
-        dateTime: "2024-12-13 22:30",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "Kiosco J.", location: "Saladas", logo: "images/equipos/kioscojG.png" },
-            score: "-- - --",
-            team2: { name: "Goyin", location: "Saladas", logo: "images/equipos/goyinG.png" }
-        },
-        partido: "Partido 2",
-        libres: "4M Dist. y Abu Castor"
-    },
-    //Jornada #6
-    {
-        jornada: "Jornada # 6",
-        dateTime: "2024-12-15 20:00",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "Abu Castor", location: "Saladas", logo: "images/equipos/abucastorG.png" },
-            score: "-- - --",
-            team2: { name: "El Bunker", location: "Bella Vista", logo: "images/equipos/elbunkerG.png" }
-        },
-        partido: "Partido 1"
-    },
-    {
-        jornada: "Jornada # 6",
-        dateTime: "2024-12-15 21:30",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "4M Dist.", location: "Saladas", logo: "images/equipos/4mdistG.png" },
-            score: "-- - --",
-            team2: { name: "Goyin", location: "Saladas", logo: "images/equipos/goyinG.png" }
-        },
-        partido: "Partido 2",
-        libres: "Kiosco J. y La Liga"
-    },
-    //Jornada #7
-    {
-        jornada: "Jornada # 7",
-        dateTime: "2024-12-18 21:00",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "La Liga", location: "Saladas", logo: "images/equipos/laligaG.png" },
-            score: "-- - --",
-            team2: { name: "Goyin", location: "Saladas", logo: "images/equipos/goyinG.png" }
-        },
-        partido: "Partido 1"
-    },
-    {
-        jornada: "Jornada # 7",
-        dateTime: "2024-12-18 22:30",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "Kiosco J.", location: "Saladas", logo: "images/equipos/kioscojG.png" },
-            score: "-- - --",
-            team2: { name: "El Bunker", location: "Bella Vista", logo: "images/equipos/elbunkerG.png" }
-        },
-        partido: "Partido 2",
-        libres: "4M Dist. y Abu Castor"
-    },
-    //Jornada #8
-    {
-        jornada: "Jornada # 8",
-        dateTime: "2024-12-20 21:00",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "4M Dist.", location: "Saladas", logo: "images/equipos/4mdistG.png" },
-            score: "-- - --",
-            team2: { name: "Abu Castor", location: "Saladas", logo: "images/equipos/abucastorG.png" }
-        },
-        partido: "Único Partido",
-        libres: "Kiosco J., La Liga, El Bunker y Goyin"
-    },
-    // {
-    //     jornada: "Jornada # 8",
-    //     dateTime: "2024-12-20 22:30",
-    //     estadio: "Juan G. Noya",
-    //     match: {
-    //         team1: { name: "Equipo 1", location: "Saladas", logo: "images/equipos/equipo1.png" },
-    //         score: "-- - --",
-    //         team2: { name: "Equipo 2", location: "Saladas", logo: "images/equipos/equipo2G.png" }
-    //     },
-    //     partido: "Partido 2",
-    //     libres: "Equipo 3 y Equipo 4"
-    // },
-    //Desempate #9
-    {
-        jornada: "Desempate # 9",
-        dateTime: "A definir, --/-- - ---- @--:--",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "Equipo 1", location: "Ciudad", logo: "images/equipos/asG.png" },
-            score: "-- - --",
-            team2: { name: "Equipo 2", location: "Ciudad", logo: "images/equipos/asG.png" }
-        },
-        partido: "Partido 1"
-    },
-    {
-        jornada: "Desempate # 9",
-        dateTime: "A definir, --/-- - ---- @--:--",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "Equipo 3", location: "Ciudad", logo: "images/equipos/asG.png" },
-            score: "-- - --",
-            team2: { name: "Equipo 4", location: "Ciudad", logo: "images/equipos/asG.png" }
-        },
-        partido: "Partido 2",
-        libres: "Si existen equipos empatados en puntos y otros criterios, se definirá su posición mediante un partido directo entre ellos. Sin embargo, si las posiciones ya están definidas, este partido de desempate no será necesario."
-    },
-    //Jornada #Semi 1
-    {
-        jornada: "Semifinal # 1",
-        dateTime: "2024-12-22 20:00",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "2° Puesto", location: "Ciudad", logo: "images/equipos/asG.png" },
-            score: "-- - --",
-            team2: { name: "3° Puesto", location: "Ciudad", logo: "images/equipos/asG.png" }
-        },
-        partido: "Partido 1"
-    },
-    {
-        jornada: "Semifinal # 1",
-        dateTime: "2024-12-22 21:30",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "1° Puesto", location: "Ciudad", logo: "images/equipos/asG.png" },
-            score: "-- - --",
-            team2: { name: "4° Puesto", location: "Ciudad", logo: "images/equipos/asG.png" }
-        },
-        partido: "Partido 2",
-        libres: "No hay"
-    },
-    //Jornada #Semi 2
-    {
-        jornada: "Semifinal # 2",
-        dateTime: "A definir, --/-- - ---- @--:--",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "1° Puesto", location: "Ciudad", logo: "images/equipos/asG.png" },
-            score: "-- - --",
-            team2: { name: "4° Puesto", location: "Ciudad", logo: "images/equipos/asG.png" }
-        },
-        partido: "Partido 1"
-    },
-    {
-        jornada: "Semifinal # 2",
-        dateTime: "A definir, --/-- - ---- @--:--",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "2° Puesto", location: "Ciudad", logo: "images/equipos/asG.png" },
-            score: "-- - --",
-            team2: { name: "3° Puesto", location: "Ciudad", logo: "images/equipos/asG.png" }
-        },
-        partido: "Partido 2",
-        libres: "No hay"
-    },
-    //Jornada #Final
-    {
-        jornada: "Final #",
-        dateTime: "A definir, --/-- - ---- @--:--",
-        estadio: "Juan G. Noya",
-        match: {
-            team1: { name: "1° Finalista", location: "Ciudad", logo: "images/equipos/asG.png" },
-            score: "-- - --",
-            team2: { name: "2° Finalista", location: "Ciudad", logo: "images/equipos/asG.png" }
-        },
-        partido: "Único Partido"
+import { partidos } from './variables.js';
+
+const logoPath = "images/equipos/"; // Ruta base para los logos
+// Función para generar el nombre del logo dinámicamente
+const generateLogoName = (teamName) => {
+    const defaultTeams = [
+        "Equipo 1", "Equipo 2",
+        "1° Puesto", "2° Puesto",
+        "3° Puesto", "4° Puesto",
+        "Finalista 1", "Finalista 2",
+        "--"
+    ];
+
+    if (defaultTeams.includes(teamName)) return "asG.png";
+    return `${teamName.toLowerCase().replace(/\s/g, "").replace(/\./g, "")}G.png`;
+};
+
+const fixtures = partidos.map(partido => {
+    let jornadaDescription;
+
+    switch (partido.fase) {
+        case 'regular':
+            jornadaDescription = `Jornada # ${partido.jornada}`;
+            break;
+        case 'semifinal 1':
+            jornadaDescription = `Semifinal # 1`;
+            break;
+        case 'semifinal 2':
+            jornadaDescription = `Semifinal # 2`;
+            break;
+        case 'desempate 1':
+            jornadaDescription = `Desempate # 1`;
+            break;
+        case 'desempate 2':
+            jornadaDescription = `Desempate # 2`;
+            break;
+        case 'final':
+            jornadaDescription = `Final #`;
+            break;
+        default:
+            jornadaDescription = `Fase desconocida`;
+            break;
     }
+
+    return {
+        jornada: jornadaDescription,
+        dateTime: partido.fecha,
+        estadio: partido.ciudad1 === partido.ciudad2 ? "Juan G. Noya" : "Juan G. Noya",
+        match: {
+            team1: {
+                name: partido.equipo1,
+                location: partido.ciudad1,
+                logo: `${logoPath}${generateLogoName(partido.equipo1)}`
+            },
+            score: `${partido.marcador1} - ${partido.marcador2}`,
+            team2: {
+                name: partido.equipo2,
+                location: partido.ciudad2,
+                logo: `${logoPath}${generateLogoName(partido.equipo2)}`
+            }
+        },
+        partido: `Partido ${partido.partido}`,
+        indice: partido.jornada
+    };
+});
+
+
+
+
+
+
+
+
+
+
+
+// Lista de equipos genéricos a excluir
+const equiposGenericos = [
+    "Equipo 1", "Equipo 2",
+    "1° Puesto", "2° Puesto",
+    "3° Puesto", "4° Puesto",
+    "Finalista 1", "Finalista 2"
 ];
+
+const obtenerEquiposLibresFaseRegular = (partidos) => {
+    const partidosFaseRegular = partidos.filter(partido => partido.fase === 'regular');
+
+    const todosLosEquipos = Array.from(
+        new Set(
+            partidosFaseRegular.flatMap(partido => [partido.equipo1, partido.equipo2])
+        )
+    ).filter(equipo => equipo !== "--" && !equiposGenericos.includes(equipo));
+
+    const jornadas = partidosFaseRegular.reduce((acc, partido) => {
+        if (!acc[partido.jornada]) acc[partido.jornada] = [];
+        acc[partido.jornada].push(partido);
+        return acc;
+    }, {});
+
+    const equiposLibresPorJornada = Object.entries(jornadas).map(([jornada, partidosJornada]) => {
+        const equiposEnJornada = partidosJornada.flatMap(partido => [partido.equipo1, partido.equipo2]);
+        const equiposLibres = todosLosEquipos.filter(equipo => !equiposEnJornada.includes(equipo));
+        return {
+            jornada: `Jornada # ${jornada}`,
+            fecha: new Date(partidosJornada[0].fecha), // Tomar fecha del primer partido
+            equiposLibres
+        };
+    });
+
+    return equiposLibresPorJornada;
+};
+
+const generarMensajeLibres = (equiposLibresFaseRegular) => {
+    return equiposLibresFaseRegular.map((jornada, index, jornadas) => {
+        const siguienteJornada = jornadas[index + 1];
+
+        // Verificar si la jornada actual y la siguiente son consecutivas
+        if (
+            siguienteJornada &&
+            Math.abs(
+                (jornada.fecha - siguienteJornada.fecha) / (1000 * 60 * 60 * 24)
+            ) <= 1 // Diferencia de un día o menos
+        ) {
+            return null; // Evitar mensaje aquí, será en la siguiente jornada
+        }
+
+        const equiposLibresTexto = jornada.equiposLibres.join(" / ");
+        return `>> ${jornada.jornada} - Equipos libres: ${equiposLibresTexto}.`;
+    }).filter(mensaje => mensaje !== null); // Eliminar mensajes nulos
+};
+
+
+const equiposLibresFaseRegular = obtenerEquiposLibresFaseRegular(partidos);
+const mensajesLibres = generarMensajeLibres(equiposLibresFaseRegular);
+
+
+
 
 function loadFixtures(fixtures) {
     const fixtureList = document.getElementById("fixturelist").querySelector("ul");
     fixtureList.innerHTML = ""; // Limpiar contenido existente
+
+    let lastJornada = null; // Para rastrear la jornada actual
 
     // Función para capitalizar la primera letra
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-    fixtures.forEach(fixture => {
+    fixtures.forEach((fixture) => {
         const rawDate = fixture.dateTime;
         let formattedDateTime;
 
@@ -318,6 +178,37 @@ function loadFixtures(fixtures) {
             formattedDateTime = rawDate;
         }
 
+        // Detectar cambios de jornada
+        if (lastJornada && lastJornada !== fixture.jornada) {
+            // Agregar separador entre jornadas
+            const separator = document.createElement("div");
+            separator.className = "jornada-separador";
+            separator.innerHTML = `<hr>`;
+            fixtureList.appendChild(separator);
+        }
+
+        // Actualizar la última jornada
+        lastJornada = fixture.jornada;
+
+        // Agregar texto antes de la jornada actual
+        if (!fixtureList.querySelector(`[data-jornada="${fixture.jornada}"]`)) {
+            const jornadaHeader = document.createElement("div");
+            jornadaHeader.className = "jornada-header";
+            jornadaHeader.setAttribute("data-jornada", fixture.jornada);
+            let indice = fixture.indice - 1;
+            let libres = "";
+            if (indice < mensajesLibres.length) {
+                libres = mensajesLibres[indice];
+            }
+           
+            jornadaHeader.innerHTML = `
+                <p><strong>${libres}</strong></p>
+                <hr> 
+            `;
+            fixtureList.appendChild(jornadaHeader);
+        }
+
+        // Crear elemento para la jornada actual
         const li = document.createElement("li");
         li.className = "col-md-12";
 
@@ -361,4 +252,3 @@ function loadFixtures(fixtures) {
 
 // Llamar a la función
 loadFixtures(fixtures);
-

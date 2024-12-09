@@ -22,7 +22,7 @@ export const partidos = [
     { id: "j7p2", jornada: 7, partido: 2, fase: 'regular', fecha: "2024-12-18 22:30", equipo1: "Kiosco J.", ciudad1: "Saladas", marcador1: "--", faltas1: "", goleador1: "-- Jugador1 (--)", equipo2: "El Bunker", ciudad2: "Bella Vista", marcador2: "--", faltas2: "", goleador2: "-- Jugador2 (--)" },
 
     { id: "j8p1", jornada: 8, partido: 1, fase: 'regular', fecha: "2024-12-20 21:00", equipo1: "4M Dist.", ciudad1: "Saladas", marcador1: "--", faltas1: "", goleador1: "-- Jugador1 (--)", equipo2: "Abu Castor", ciudad2: "Saladas", marcador2: "--", faltas2: "", goleador2: "-- Jugador2 (--)" },
-    // { id: "j8p2", jornada: 8, partido: 2, fase: 'regular',fecha: "2024-12-20 22:30", equipo1: "Equipo 1", ciudad1:"-----",marcador1: "--", faltas1: "", goleador1: "-- Jugador1 (--)", equipo2: "Equipo 2",ciudad2:"-----", marcador2: "--", faltas2: "", goleador2: "-- Jugador2 (--)" },
+    // { id: "j8p2", jornada: 8, partido: 2, fase: 'regular', fecha: "2024-12-20 22:30", equipo1: "Equipo 1", ciudad1: "-----", marcador1: "--", faltas1: "", goleador1: "-- Jugador1 (--)", equipo2: "Equipo 2", ciudad2: "-----", marcador2: "--", faltas2: "", goleador2: "-- Jugador2 (--)" },
 
     { id: "j9p1", jornada: 9, partido: 1, fase: 'semifinal 1', fecha: "2024-12-22 21:00", equipo1: "2° Puesto", ciudad1: "-----", marcador1: "--", faltas1: "", goleador1: "-- Jugador1 (--)", equipo2: "3° Puesto", ciudad2: "-----", marcador2: "--", faltas2: "", goleador2: "-- Jugador2 (--)" },
     { id: "j9p2", jornada: 9, partido: 2, fase: 'semifinal 1', fecha: "2024-12-22 22:30", equipo1: "1° Puesto", ciudad1: "-----", marcador1: "--", faltas1: "", goleador1: "-- Jugador1 (--)", equipo2: "4° Puesto", ciudad2: "-----", marcador2: "--", faltas2: "", goleador2: "-- Jugador2 (--)" },
@@ -30,11 +30,11 @@ export const partidos = [
     { id: "j10p1", jornada: 10, partido: 1, fase: 'semifinal 2', fecha: "A definir, --/-- - --:--", equipo1: "1° Puesto", ciudad1: "-----", marcador1: "--", faltas1: "", goleador1: "-- Jugador1 (--)", equipo2: "4° Puesto", ciudad2: "-----", marcador2: "--", faltas2: "", goleador2: "-- Jugador2 (--)" },
     { id: "j10p2", jornada: 10, partido: 2, fase: 'semifinal 2', fecha: "A definir, --/-- - --:--", equipo1: "2° Puesto", ciudad1: "-----", marcador1: "--", faltas1: "", goleador1: "-- Jugador1 (--)", equipo2: "3° Puesto", ciudad2: "-----", marcador2: "--", faltas2: "", goleador2: "-- Jugador2 (--)" },
 
-    // { id: "j11p1", jornada: 11, partido: 1, fase: 'desempates',fecha: "A definir, --/-- - --:--", equipo1: "Equipo 1", ciudad1:"-----",marcador1: "--", faltas1: "", goleador1: "-- Jugador1 (--)", equipo2: "Equipo 2",ciudad2:"-----", marcador2: "--", faltas2: "", goleador2: "-- Jugador2 (--)" },
-    // { id: "j11p2", jornada: 11, partido: 2, fase: 'desempates',fecha: "A definir, --/-- - --:--", equipo1: "Equipo 3", ciudad1:"-----",marcador1: "--", faltas1: "", goleador1: "-- Jugador1 (--)", equipo2: "Equipo 4",ciudad2:"-----", marcador2: "--", faltas2: "", goleador2: "-- Jugador2 (--)" },
+     { id: "j11p1", jornada: 11, partido: 1, fase: 'desempate 1', fecha: "A definir, --/-- - --:--", equipo1: "Equipo 1", ciudad1: "-----", marcador1: "--", faltas1: "", goleador1: "-- Jugador1 (--)", equipo2: "Equipo 2", ciudad2: "-----", marcador2: "--", faltas2: "", goleador2: "-- Jugador2 (--)" },
+    //{ id: "j11p2", jornada: 11, partido: 2, fase: 'desempate 2', fecha: "A definir, --/-- - --:--", equipo1: "Equipo 3", ciudad1: "-----", marcador1: "--", faltas1: "", goleador1: "-- Jugador1 (--)", equipo2: "Equipo 4", ciudad2: "-----", marcador2: "--", faltas2: "", goleador2: "-- Jugador2 (--)" },
 
     { id: "j12p1", jornada: 12, partido: 1, fase: 'final', fecha: "A definir, --/-- - --:--", equipo1: "Finalista 1", ciudad1: "-----", marcador1: "--", faltas1: "", goleador1: "-- Jugador1 (--)", equipo2: "Finalista 2", ciudad2: "-----", marcador2: "--", faltas2: "", goleador2: "-- Jugador2 (--)" }
-    //, { id: "j12p2", jornada: 12, partido: 2, fase: 'final', fecha: "A definir, --/-- - --:--", equipo1: "Finalista 2", ciudad1:"-----",marcador1: "--", faltas1: "", goleador1: "-- Jugador2 (--)", equipo2: "Finalista 1",ciudad2:"-----", marcador2: "--", faltas2: "", goleador2: "-- Jugador1 (--)" }
+    // , { id: "j12p2", jornada: 12, partido: 2, fase: 'final', fecha: "A definir, --/-- - --:--", equipo1: "Finalista 2", ciudad1: "-----", marcador1: "--", faltas1: "", goleador1: "-- Jugador2 (--)", equipo2: "Finalista 1", ciudad2: "-----", marcador2: "--", faltas2: "", goleador2: "-- Jugador1 (--)" }
 ];
 
 

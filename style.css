@@ -8422,3 +8422,9 @@ blockquote span:before {
          -o-transition: all 0.4s ease-in-out;
             transition: all 0.4s ease-in-out;
 }
+.jornada-separador {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.2em;
+    color: #555;
+}
