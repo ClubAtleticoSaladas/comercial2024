@@ -127,6 +127,7 @@ posiciones.forEach((equipo, index) => {
     );
 
     // Crear estructura de la fila
+    const formatearNumero = (num) => `${num >= 0 ? `+${num}` : num}`;
     fila.innerHTML = `
         <td>${index + 1}</td> <!-- POS -->
         <td>
@@ -144,7 +145,7 @@ posiciones.forEach((equipo, index) => {
         <td>${equipo.perdidos}</td> <!-- PP -->
         <td>${equipo.marcadorAFavor}</td> <!-- PF -->
         <td>${equipo.marcadorEnContra}</td> <!-- PC -->
-        <td>${equipo.diferencia}</td> <!-- DIF -->
+        <td>${formatearNumero(equipo.diferencia)}</td> <!-- DIF -->
         <td>${equipo.faltasTotales}</td> <!-- FT -->
     `;
 
