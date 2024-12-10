@@ -1,4 +1,4 @@
-import { partidos } from './variables.js';
+import { partidos, nuevoTextos } from './variables.js';
 
 const buscarPartidoPorId = (id) => {
   const partidoEncontrado = partidos.find(partido => partido.id === id);
@@ -48,14 +48,12 @@ function actualizarNoticias(id) {
   };
   if (partidoEncontrado.partido == 1) {
     // Texto nuevo que quieres agregar
-    const nuevoTexto1 = "En la jornada " + partidoEncontrado.jornada + " de la fase " + partidoEncontrado.fase + ", " + equipoGana +
-      " gana a " + equipoPierde + " por " + Math.abs(difPartido) + " puntos de diferencia.";
+    const nuevoTexto1 = nuevoTextos[0];
     // Actualizar el primer slider
     document.getElementById("fecha-1").textContent = `${mes} ${anio} >> C.A.S.`;
     document.getElementById("text-1").textContent = nuevoTexto1;
   } else if (partidoEncontrado.partido == 2) {
-    const nuevoTexto2 = "¡En la fase " + partidoEncontrado.fase + " del partido " + partidoEncontrado.partido + " en el Torneo Comercial, " +
-      equipoGana + " vence a " + equipoPierde + " por " + ptsGanador + " a " + ptsPerdedor + "!";
+    const nuevoTexto2 = nuevoTextos[1];
     // Actualizar el segundo slider
     document.getElementById("fecha-2").textContent = `${mes} ${anio} >> C.A.S.`;
     document.getElementById("text-2").textContent = nuevoTexto2;
