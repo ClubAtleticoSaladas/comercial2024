@@ -6,11 +6,9 @@ export const partidos = [
     { id: "j2p2", jornada: 2, partido: 2, fase: "regular", fecha: "2024-12-04 22:30", equipo1: "El Bunker", ciudad1: "Bella Vista", marcador1: 72, faltas1: 12, goleador1: "17 Francisco Albarellos (31)", equipo2: "Goyin", ciudad2: "Saladas", marcador2: 81, faltas2: 12, goleador2: "08 Ivan Bolaño (24)" },
     { id: "j3p1", jornada: 3, partido: 1, fase: "regular", fecha: "2024-12-06 21:00", equipo1: "Abu Castor", ciudad1: "Saladas", marcador1: 62, faltas1: 10, goleador1: "07 Omar F. Staffolani (18)", equipo2: "Goyin", ciudad2: "Saladas", marcador2: 81, faltas2: 11, goleador2: "08 Ivan Bolaño (13)" },
     { id: "j3p2", jornada: 3, partido: 2, fase: "regular", fecha: "2024-12-06 22:30", equipo1: "4M Dist.", ciudad1: "Saladas", marcador1: 67, faltas1: 15, goleador1: "07 Gonzalo Spikerman (19)", equipo2: "El Bunker", ciudad2: "Bella Vista", marcador2: 74, faltas2: 15, goleador2: "15 Lucas M. Hanke (21)" },
-
     { id: "j4p1", jornada: 4, partido: 1, fase: "regular", fecha: "2024-12-11 21:00", equipo1: "Kiosco J.", ciudad1: "Saladas", marcador1: 92, faltas1: 11, goleador1: "05 Cristian Rausch (44)", equipo2: "Abu Castor", ciudad2: "Saladas", marcador2: 84, faltas2: 20, goleador2: "13 Mauricio Lago (22)" },
+
     { id: "j4p2", jornada: 4, partido: 2, fase: "regular", fecha: "2024-12-11 22:30", equipo1: "4M Dist.", ciudad1: "Saladas", marcador1: "--", faltas1: "", goleador1: "-- Jugador1 (--)", equipo2: "La Liga", ciudad2: "Saladas", marcador2: "--", faltas2: "", goleador2: "-- Jugador2 (--)" },
-
-
     
     { id: "j5p1", jornada: 5, partido: 1, fase: "regular", fecha: "2024-12-13 21:00", equipo1: "La Liga", ciudad1: "Saladas", marcador1: "--", faltas1: "", goleador1: "-- Jugador1 (--)", equipo2: "El Bunker", ciudad2: "Bella Vista", marcador2: "--", faltas2: "", goleador2: "-- Jugador2 (--)" },
     { id: "j5p2", jornada: 5, partido: 2, fase: "regular", fecha: "2024-12-13 22:30", equipo1: "Kiosco J.", ciudad1: "Saladas", marcador1: "--", faltas1: "", goleador1: "-- Jugador1 (--)", equipo2: "Goyin", ciudad2: "Saladas", marcador2: "--", faltas2: "", goleador2: "-- Jugador2 (--)" },
