@@ -8428,3 +8428,7 @@ blockquote span:before {
     font-size: 1.2em;
     color: #555;
 }
+.clasificado {
+    background-color: #d4edda; /* Verde claro */
+    font-weight: bold;
+}

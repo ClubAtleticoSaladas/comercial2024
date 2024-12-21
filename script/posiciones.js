@@ -117,6 +117,43 @@ const posiciones = evaluarPosiciones(resultados);
 const tablaBody = document.querySelector("#tablePos tbody");
 
 // Generar las filas de la tabla con colores alternos y estructura personalizada
+// posiciones.forEach((equipo, index) => {
+//     const fila = document.createElement("tr");
+
+//     // Alternar el color de fondo usando el atributo `style`
+//     fila.setAttribute(
+//         "style",
+//         `background-color: ${index % 2 === 0 ? "#ffffff" : "#f2f2f2"};`
+//     );
+
+//     // Crear estructura de la fila
+//     const formatearNumero = (num) => `${num >= 0 ? `+${num}` : num}`;
+//     fila.innerHTML = `
+//         <td>${index + 1}</td> <!-- POS -->
+//         <td>
+//             <figure>
+//                 <img src="${equipo.identificador}" alt="${equipo.nombre}">
+//             </figure>
+//             <div class="player-stats-text">
+//                 <h6>${equipo.nombre}</h6>
+//                 <span>${equipo.ciudad}</span>
+//             </div>
+//         </td> <!-- Equipo -->
+//         <td>${equipo.puntos}</td> <!-- Pts -->
+//         <td>${equipo.partidosJugados}</td> <!-- PJ -->
+//         <td>${equipo.ganados}</td> <!-- PG -->
+//         <td>${equipo.perdidos}</td> <!-- PP -->
+//         <td>${equipo.marcadorAFavor}</td> <!-- PF -->
+//         <td>${equipo.marcadorEnContra}</td> <!-- PC -->
+//         <td>${formatearNumero(equipo.diferencia)}</td> <!-- DIF -->
+//         <td>${equipo.faltasTotales}</td> <!-- FT -->
+//     `;
+
+//     // Agregar la fila al tbody de la tabla
+//     tablaBody.appendChild(fila);
+// });
+
+
 posiciones.forEach((equipo, index) => {
     const fila = document.createElement("tr");
 
@@ -125,6 +162,26 @@ posiciones.forEach((equipo, index) => {
         "style",
         `background-color: ${index % 2 === 0 ? "#ffffff" : "#f2f2f2"};`
     );
+
+    // Determinar el clasificado según la posición
+    let clasificado = "";
+    if (index === 0) {
+        clasificado = "👈🏻 1° Clasificado";
+        fila.classList.add("clasificado"); // Resaltar fila
+    } else if (index === 1) {
+        clasificado = "👈🏻 2° Clasificado";
+        fila.classList.add("clasificado"); // Resaltar fila
+    } else if (index === 2) {
+        clasificado = "👈🏻 3° Clasificado";
+        fila.classList.add("clasificado"); // Resaltar fila
+    } else if (index === 3) {
+        clasificado = "👈🏻 4° Clasificado";
+        fila.classList.add("clasificado"); // Resaltar fila
+    } else if (index === 4) {
+        clasificado = " Eliminado";
+    } else if (index === 5) {
+        clasificado = " Eliminado";
+    }
 
     // Crear estructura de la fila
     const formatearNumero = (num) => `${num >= 0 ? `+${num}` : num}`;
@@ -139,6 +196,7 @@ posiciones.forEach((equipo, index) => {
                 <span>${equipo.ciudad}</span>
             </div>
         </td> <!-- Equipo -->
+        <td>${clasificado}</td> <!-- SM -->
         <td>${equipo.puntos}</td> <!-- Pts -->
         <td>${equipo.partidosJugados}</td> <!-- PJ -->
         <td>${equipo.ganados}</td> <!-- PG -->
