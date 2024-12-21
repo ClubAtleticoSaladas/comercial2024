@@ -329,7 +329,7 @@ function renderClasificacion(clasificacion) {
     rankingContent.className = "ranking-content-table";
     rankingContent.innerHTML = `
       <ul class="ranking-content-row">
-        <li>${index + 1}</li>
+        <li>${index + 1}°</li>
         <li>
           <img src="${equipo.imagen}" alt="">
           <div class="ranking-logo">
