@@ -3,7 +3,10 @@ import { partidos } from './variables.js'
 const procesarEquipos = (partidos) => {
     const equipos = {};
 
-    partidos.forEach(({ equipo1, ciudad1, marcador1, faltas1, equipo2, ciudad2, marcador2, faltas2 }) => {
+    partidos.forEach(({ equipo1, ciudad1, marcador1, faltas1, equipo2, ciudad2, marcador2, faltas2, fase }) => {
+        // Procesar solo partidos de fase "regular"
+        if (fase !== "regular") return;
+
         // Filtrar equipos no válidos
         const equiposInvalidos = ["Equipo 1", "Equipo 2", "1° Puesto", "2° Puesto", "3° Puesto", "4° Puesto", "Finalista 1", "Finalista 2"];
         if (equiposInvalidos.includes(equipo1) || equiposInvalidos.includes(equipo2)) return;
@@ -15,7 +18,7 @@ const procesarEquipos = (partidos) => {
         // Inicializar equipos si no están
         if (!equipos[equipo1]) {
             equipos[equipo1] = {
-                identificador: "images/equipos/"+generarIdentificador(equipo1)+"G.png",
+                identificador: "images/equipos/" + generarIdentificador(equipo1) + "G.png",
                 ciudad: ciudad1,
                 partidosJugados: 0,
                 ganados: 0,
@@ -28,7 +31,7 @@ const procesarEquipos = (partidos) => {
         }
         if (!equipos[equipo2]) {
             equipos[equipo2] = {
-                identificador: "images/equipos/"+generarIdentificador(equipo2)+"G.png",
+                identificador: "images/equipos/" + generarIdentificador(equipo2) + "G.png",
                 ciudad: ciudad2,
                 partidosJugados: 0,
                 ganados: 0,
@@ -59,7 +62,7 @@ const procesarEquipos = (partidos) => {
             equipos[equipo1].puntos += 2;
         } else {
             equipos[equipo1].perdidos++;
-            equipos[equipo1].puntos ++;
+            equipos[equipo1].puntos++;
         }
 
         // Actualizar datos para equipo2
@@ -72,7 +75,7 @@ const procesarEquipos = (partidos) => {
             equipos[equipo2].puntos += 2;
         } else {
             equipos[equipo2].perdidos++;
-            equipos[equipo2].puntos ++;
+            equipos[equipo2].puntos++;
         }
     });
 
@@ -86,6 +89,7 @@ const procesarEquipos = (partidos) => {
 
     return resultados;
 };
+
 
 const resultados = procesarEquipos(partidos);
 
